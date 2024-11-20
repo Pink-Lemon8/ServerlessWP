@@ -95,24 +95,24 @@ define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL );
 $_SERVER['HTTPS'] = 'on';
 
 // Optional S3 credentials for file storage.
-if (isset($_ENV['AWS_ACCESS_KEY_ID']) && isset($_ENV['AWS_SECRET_ACCESS_KEY']) && isset($_ENV['S3_REGION']) && isset($_ENV['S3_BUCKET']) && isset($_ENV['MINIO_ENDPOINT'])) {
-    // Individual constants
-    define('AS3CF_PROVIDER', 'aws');
-    define('AS3CF_REGION', $_ENV['S3_REGION']);
-    define('AS3CF_BUCKET', $_ENV['S3_BUCKET']);
+// if (isset($_ENV['AWS_ACCESS_KEY_ID']) && isset($_ENV['AWS_SECRET_ACCESS_KEY']) && isset($_ENV['S3_REGION']) && isset($_ENV['S3_BUCKET']) && isset($_ENV['MINIO_ENDPOINT'])) {
+//     // Individual constants
+//     define('AS3CF_PROVIDER', 'aws');
+//     define('AS3CF_REGION', $_ENV['S3_REGION']);
+//     define('AS3CF_BUCKET', $_ENV['S3_BUCKET']);
     
-    // Serialized settings
-    define('AS3CF_SETTINGS', serialize(array(
-        'provider' => 'aws',
-        'access-key-id' => $_ENV['AWS_ACCESS_KEY_ID'],
-        'secret-access-key' => $_ENV['AWS_SECRET_ACCESS_KEY'],
-        'region' => $_ENV['S3_REGION'],
-        'bucket' => $_ENV['S3_BUCKET'],
-        'endpoint' => $_ENV['MINIO_ENDPOINT'],
-        'use-server-roles' => false,
-        'use-path-style-endpoint' => true
-    )));
-}
+//     // Serialized settings
+//     define('AS3CF_SETTINGS', serialize(array(
+//         'provider' => 'aws',
+//         'access-key-id' => $_ENV['AWS_ACCESS_KEY_ID'],
+//         'secret-access-key' => $_ENV['AWS_SECRET_ACCESS_KEY'],
+//         'region' => $_ENV['S3_REGION'],
+//         'bucket' => $_ENV['S3_BUCKET'],
+//         'endpoint' => $_ENV['MINIO_ENDPOINT'],
+//         'use-server-roles' => false,
+//         'use-path-style-endpoint' => true
+//     )));
+// }
 
 // Disable file modification because the changes won't be persisted.
 define('DISALLOW_FILE_EDIT', true );
