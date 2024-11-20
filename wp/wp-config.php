@@ -102,6 +102,9 @@ if (isset($_ENV['S3_KEY_ID']) && isset($_ENV['S3_ACCESS_KEY'])) {
         'secret-access-key' => $_ENV['S3_ACCESS_KEY'],
 	'region' => $_ENV['S3_REGION'],
         'bucket' => $_ENV['S3_BUCKET'],
+	'endpoint' => $_ENV['MINIO_ENDPOINT'],
+        'use-server-roles' => false,
+        'use-path-style-endpoint' => true
 ) ) );
 }
 
