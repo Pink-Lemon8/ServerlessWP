@@ -1,0 +1,12 @@
+.pwire-ajax-account-tools-widget {
+	.cart-quantity {
+		&.cart-has-items {
+			&::before {
+				content: '(';
+			}
+			&::after {
+				content: ')';
+			}
+		}
+	}	
+}

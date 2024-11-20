@@ -1,0 +1,172 @@
+<!-- BEGIN: page -->
+{PAGE_WRAPPER_OPEN}
+
+<div class="pw-search-detail grid-x grid-margin-x" data-tier-pricing="{TIER_PRICING}" data-package-condition="{PACKAGE_CONDITION}" data-package-condition-link="{PACKAGE_CONDITION_LINK}" data-search-name="{DRUG_SEARCH_NAME}" data-search-id="{DRUG_SEARCH_ID}" data-ingredient-list="{INGREDIENT_LIST}">
+	<form name="frmDetail" id="frmDetail-{FORM_ID}" class="cell" action="{ADD_TO_CART_URL}" method="post">
+		<input type="hidden" id="package-{FORM_ID}" name="package" value="" />
+		<input type="hidden" id="status" name="status" value="cart" />
+		<input type="hidden" id="qty-{FORM_ID}" name="qty" value="0" />
+		<!-- BEGIN: TierPackageQuantity -->
+		<input type="hidden" name="drug-package-qty" class="drug-package-qty drug-package-qty-{FORM_ID}" value="0" />
+		<!-- END: TierPackageQuantity -->
+
+		<div class="page-search-detail {REFERENCE_DRUG} cell small-12">
+			<!-- BEGIN: headings -->
+			{SEARCH_DETAILHEADING}
+			{SEARCH_DETAILTEXT}
+			<!-- END: headings -->
+			<!-- BEGIN: brandDrug -->
+			<div class="drug-result item-container grid-x" data-type="{BRAND_OR_GENERIC_LABEL}" data-rx-status="{ITEM_RX_STATUS}">
+				<table>
+					<thead>
+						<tr class="item-header">
+							<td colspan="7" class="medicationHeading">
+								{BRAND_NAME}
+								<!-- BEGIN: genericDrug --><span class="generic generic-label">(Generic)</span>
+								<!-- END: genericDrug -->
+							</td>
+						</tr>
+						<tr class="item-header">
+							<td colspan="7" class="medicationIngredient">
+								{INGREDIENT_LIST}
+							</td>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- BEGIN: brandPackage -->
+						<tr class="{ROW.drugClass} drug-package item-center row" package-id="{ROW.packageId}" form-id="{ROW.formId}" data-rx-status="{ITEM_RX_STATUS}" data-tier-qty="{ROW.tierQuantity}">
+							<td class="drug-icons large-2 small-2 columns">
+								{ROW.brandOrGeneric}{ROW.rxRequired}{ROW.countryFlag}</td>
+							<td class="drug-type large-2 columns hide-for-small">{ROW.category}</td>
+							<td class="drug-form large-2 columns hide-for-small">{ROW.form}</td>
+							<td class="strength large-3 small-5 columns">{ROW.strength}{ROW.strengthUnit} <span class="quantity">{ROW.quantity}</span></td>
+							<td class="price large-2 small-2 columns"><strong>\${ROW.price}</strong></td>
+							<td class="add-to-cart large-1 small-3 columns">
+								{ROW.buyButton}
+							</td>
+						</tr>
+						<!-- END: brandPackage -->
+						<!-- BEGIN: brandPackageDropdown -->
+						<tr class="{ROW.drugClass} drug-package drug-dropdown" package-id="{INITIAL_PACKAGEID}" form-id="{ROW.formId}" data-rx-status="{ITEM_RX_STATUS}" data-type="{BRAND_OR_GENERIC_LABEL}">
+							<td colspan="6">
+								<div class="grid-x drug-dropdown-note note">Select product strength &amp; quantity:
+								</div>
+								<div class="grid-x">
+									<div class="small-12 medium-8 cell">
+										<select name="drug-package-dropdown" class="drug-package-dropdown cell auto" size="1">
+											<!-- BEGIN: brandPackageDropdownOptions -->
+											<option class="drug-package-tier" data-str="{ROW.strength}" data-brand-name="{BRAND_NAME}" data-form="{ROW.form}" data-category="{ROW.category}" value="{ROW.packageId}" data-country="{ROW.country}" data-tier-qty="{ROW.tierQuantity}" data-package-id="{ROW.packageId}" data-drug-id="{ROW.drugId}" data-form-id="{ROW.formId}" data-drug-json='{ROW.drugJson}' data-package-json='{ROW.packageJson}' data-drug-familyname="{ROW.drugFamilyName}">
+												{ROW.strength}{ROW.strengthUnit} - {ROW.quantity} - Source:
+												{ROW.country} - \${ROW.price}</option>
+											<!-- END: brandPackageDropdownOptions -->
+										</select>
+									</div>
+									<div class="small-12 medium-4 cell add-to-cart">
+										{ROW.buyButton}
+									</div>
+								</div>
+							</td>
+						</tr>
+						<!-- END: brandPackageDropdown -->
+					</tbody>
+				</table>
+			</div>
+			<!-- END: brandDrug -->
+			<span class="schedule-message">{SCHEDULE_MESSAGE}</span>
+		</div>
+		<!-- page-search-detail ends -->
+	</form>
+</div>
+{PAGE_WRAPPER_CLOSE}
+
+<!-- BEGIN: structuredData -->
+<!-- BEGIN: drugSchema -->
+<script type="application/ld+json">
+	{
+		"@context": "http://schema.org",
+		"@type": "Drug",
+		"name": "{DRUGSCHEMA.name}",
+		"activeIngredient": "{DRUGSCHEMA.activeIngredient}",
+		"isProprietary": "{DRUGSCHEMA.isProprietary}",
+		"legalStatus": [{
+			"@type": "DrugLegalStatus",
+			"applicableLocation": [{
+				"@type": "AdministrativeArea",
+				"name": "US"
+			}],
+			"name": "{DRUGSCHEMA.legalStatusName}"
+		}],
+		"manufacturer": [ 
+			<!-- BEGIN: manufacturer --> 
+			{
+				"@type": "Organization",
+				"name": "{MANUFACTURER.name}"
+			}<!-- BEGIN: seperator -->, <!-- END: seperator -->
+			<!-- END: manufacturer -->
+		],
+		"prescriptionStatus": "{DRUGSCHEMA.prescriptionStatus}",
+		"availableStrength": [ 
+			<!-- BEGIN: availableStrengthItem --> 
+			{
+				"@type": "DrugStrength",
+				"strengthUnit": "{AVAILABLESTRENGTH.strengthUnit}"
+			}<!-- BEGIN: seperator -->, <!-- END: seperator -->
+			<!-- END: availableStrengthItem -->
+		],
+		"offers": {
+			"@type": "AggregateOffer",
+			"lowPrice": "{DRUGSCHEMA.lowPrice}",
+			"highPrice": "{DRUGSCHEMA.highPrice}",
+			"priceCurrency": "USD",
+			"offerCount": "{DRUGSCHEMA.offerCount}",
+			"availability": "http://schema.org/InStock",
+			"itemCondition": "http://schema.org/NewCondition",
+			"seller": {
+				"@type": "Organization",
+				"url": "{DRUGSCHEMA.siteurl}",
+				"name": "{DRUGSCHEMA.pharmacyname}"
+			}
+		}
+	}
+</script>
+<!-- END: drugSchema -->
+<!-- BEGIN: productSchema -->
+<script type="application/ld+json">
+	{
+		"@context": "http://schema.org/",
+		"@type": "Product",
+		"@id": "{PRODUCTSCHEMA.url}",
+		"name": "{PRODUCTSCHEMA.name}",
+		"category": "{PRODUCTSCHEMA.category}",
+		"description": "{PRODUCTSCHEMA.description}",
+		"id": "{PRODUCTSCHEMA.url}",
+		"sku": "{PRODUCTSCHEMA.sku}",
+		"mpn": "{PRODUCTSCHEMA.mpn}",
+		"url": "{PRODUCTSCHEMA.url}",
+		"brand": {
+			"@type": "Thing",
+			"name": "{PRODUCTSCHEMA.name}"
+		},
+		<!-- BEGIN: image -->
+			"image": "{PRODUCTSCHEMA.image}",
+		<!-- END: image -->
+		"offers": {
+			"@type": "AggregateOffer",
+			"lowPrice": "{PRODUCTSCHEMA.lowPrice}",
+			"highPrice": "{PRODUCTSCHEMA.highPrice}",
+			"priceCurrency": "USD",
+			"offerCount": "{PRODUCTSCHEMA.offerCount}",
+			"availability": "http://schema.org/InStock",
+			"itemCondition": "http://schema.org/NewCondition",
+			"seller": {
+				"@type": "Organization",
+				"url": "{PRODUCTSCHEMA.siteurl}",
+				"name": "{PRODUCTSCHEMA.pharmacyname}"
+			}
+		}
+	}
+</script>
+<!-- END: productSchema -->
+<!-- END: structuredData -->
+
+<!-- END: page -->

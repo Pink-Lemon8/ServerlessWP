@@ -1,0 +1,31 @@
+#prescriptionUpload {
+	border: 4px solid rgba(0, 0, 0, 0.3);
+
+	.dz-message {
+		font-weight: bold;
+		font-size: 1.2rem;
+
+		.fa-file-prescription,
+		.fa-upload {
+			font-size: 4rem;
+			padding: 0 0.25rem 0.25rem 0.5rem;
+		}
+
+		.fa-upload {
+			font-size: 2.5rem;
+			position: relative;
+			top: -0.5rem;
+		}
+	}
+
+	.upload-rx-response {
+		font-size: 2.5rem;
+		font-weight: bold;
+		text-align: center;
+
+		&.success {
+			color: green;
+		}
+	}
+
+}

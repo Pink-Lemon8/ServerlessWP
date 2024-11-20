@@ -1,0 +1,44 @@
+/******************************************************************
+	
+Stylesheet: Main Stylesheet
+
+Here's where the magic happens. Here is where you import
+all of your Sass files so they can compile into one
+CSS file. 
+
+******************************************************************/
+
+// Theme Variables
+@import 'variables/colors';
+
+// Helpers
+@import 'helpers/mixins';
+@import 'helpers/breakpoints';
+
+// General styles
+@import 'typography/typography';
+@import "general";
+
+// Components
+@import 'components/buttons';
+@import 'components/search';
+@import 'components/form';
+@import 'components/shortcodes';
+@import 'components/upload_form';
+@import 'components/spinner';
+@import "components/bootstrap_conflict_overrides";
+
+// Sections
+@import "sections/account_profile";
+@import "sections/checkout_billing";
+@import "sections/checkout_cart";
+@import "sections/checkout_shipping";
+@import "sections/checkout_confirm";
+@import "sections/checkout_thankyou";
+@import "sections/password";
+@import "sections/register";
+@import "sections/reorder";
+@import "sections/search_detail";
+@import "sections/search_summary";
+@import "sections/widget_shopping_cart";
+@import "sections/widget_account_tools";

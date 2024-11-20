@@ -1,0 +1,14 @@
+<!-- BEGIN: page -->
+<div class="pw-pharmacy-wrap pw-register-success container">
+	<p>Thank you for registering with us, your account has been created.</p>
+	<a href="{HOME}">Continue Shopping</a>
+	<!-- {RESULT_MESSAGES} -->
+
+	<script>
+		jQuery(window).on('load', () => {
+			jQuery('.pw-pharmacy-wrap').trigger('pwire:account:newAccount');
+			jQuery('.pw-pharmacy-wrap').trigger('pwire:account:newAccount_register');
+		});
+	</script>
+</div>
+<!-- END: page -->

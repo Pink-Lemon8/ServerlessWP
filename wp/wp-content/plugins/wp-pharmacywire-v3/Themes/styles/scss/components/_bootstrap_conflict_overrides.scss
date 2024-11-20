@@ -1,0 +1,17 @@
+.pw-tooltip.tooltip {
+	opacity: 1 !important;
+}
+
+.pw-pharmacy-wrap {
+	.collapse {
+		display: flex;
+
+		&.grid-x {
+			display: flex;
+		}
+
+		&.cell {
+			display: flex;
+		}
+	}
+}

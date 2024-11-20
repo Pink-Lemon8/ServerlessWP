@@ -1,0 +1,115 @@
+legend h3,
+legend h4 {
+	font-weight: bold;
+	margin-bottom: 0;
+}
+
+.checkout_form {
+	label {
+		font-weight: bold;
+	}
+	.question {
+		font-weight: bold;
+	}
+	.form-hint {
+		font-size: 80%;
+	}
+	.progress {
+		height: 1.2rem;
+	}
+	.progress-meter {
+		transition: 0.5s ease;
+
+		.progress-meter-text {
+			font-size: 1rem;
+		}
+
+		fieldset {
+			padding-top: 1rem;
+			padding-bottom: 1rem;
+			margin-bottom: 1rem;
+			border-bottom: 2px solid #000;
+		}
+	}
+
+	.billing_method_select {
+		.billing_method {
+			display: none;
+		}
+		.billing_method_label {
+			display: none;
+		}
+	}
+
+	.selected-address-container {
+		&:not(:empty) {
+			min-height: 3rem;
+		}
+	}
+
+	.sex-selection-container {
+		[type=radio]#sexM {
+			margin-bottom: 0;
+		}
+	}
+
+	.billing_method_creditCard {
+		.credit-card-icon {
+			font-size: 1.4rem;
+		}
+		.supported-credit-card-icons {
+			margin-bottom: 0.5rem;
+
+			.credit-card-icon {
+				padding: 0 0.5rem 0 0;
+			}
+		}
+		.credit-card-number {
+			position: relative;
+
+			.credit-card-icon {
+				position: absolute;
+				top: 6px;
+				right: 0;
+			}
+		}
+	}
+}
+
+.pw-pharmacy-wrap {
+
+	.coupon-code.pwire-spinner-container {
+		background-position: center right 0.1em;
+		background-size: 1.5em;
+	}
+
+	.cart-response {
+		margin-bottom: 1rem;
+		min-height: 4rem;
+		&.submitting-order {
+			&.pwire-spinner-container {
+				background-position: left;
+				padding-left: 4rem;
+				line-height: 4rem;
+				min-height: 4rem;
+			}
+		}
+	}
+
+	.rx-submission-method {
+		margin-bottom: 2rem;
+	}
+}
+
+#alternate-shipping-addresses,
+#update-shipping-address {
+	padding: 3.5rem 1rem 1rem 1rem;
+}
+
+#confirm-shipping-address-delete {
+	button {
+		&.delete {
+			margin-bottom: 0;
+		}
+	}
+}

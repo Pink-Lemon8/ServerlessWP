@@ -1,0 +1,269 @@
+<!-- BEGIN: page -->
+
+<div class="pw-pharmacy-wrap pw-register registration-page pw-account container">
+	<div class="page-register-form">
+		{RESULT_MESSAGES}
+		<form enctype="application/x-www-form-urlencoded" method="POST" action="" name="Sign_Up_Edit">
+			<input type="hidden" value="1" name="submitted">
+			<input type="hidden" id="billing_useShippingAddress" name="billing_useShippingAddress" value="{USESHIPPINGFORBILLING}" />
+
+			<fieldset id="login-info">
+				<legend>Login Information</legend>
+				<div class="username-email grid-x grid-margin-x">
+					<div class="item large-6 cell">
+						<div class="required heading">Email</div>
+						<div><input name="Username" type="text" maxlength="50" placeholder="Email Address" value="{VALUE_USERNAME}" class="username {CLASS_USERNAME}" autocomplete="username" />
+							{ERROR_USERNAME}</div>
+					</div>
+					<div class="item large-6 cell">
+						<div class="required heading">Confirm Email</div>
+						<div><input name="ConfirmUsername" type="text" maxlength="50" placeholder="Confirm Email Address" value="{VALUE_CONFIRM_USERNAME}" class="confirm-username {CLASS_CONFIRM_USERNAME}" autocomplete="username" /> {ERROR_CONFIRM_USERNAME}</div>
+					</div>
+				</div>
+				<div class="password-confirm-password grid-x grid-margin-x">
+					<div class="item large-6 cell">
+						<div class="required heading">Password</div>
+						<div>
+							<input id="password" name="Password" type="password" autocomplete="new-password" value="{VALUE_PASSWORD}" class="password {CLASS_PASSWORD}" />
+							<div class="progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuetext="0 percent" aria-valuemax="100">
+								<span class="progress-meter" style="width: 0%">
+									<p class="progress-meter-text"></p>
+								</span>
+							</div>
+							{ERROR_PASSWORD}
+						</div>
+					</div>
+					<div class="item large-6 cell">
+						<div class="required heading">Confirm Password</div>
+						<div>
+							<input id="confirm-password" name="ConfirmPassword" type="password" autocomplete="new-password" value="{VALUE_CONFIRM_PASSWORD}" class="confirm-password {CLASS_CONFIRM_PASSWORD}" />
+							{ERROR_CONFIRM_PASSWORD}</div>
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset id="contact-info">
+				<legend>Contact Info</legend>
+				<div class="name grid-x grid-margin-x">
+					<div class="first-name required large-6 cell">
+						<input type="Text" maxlength="150" size="30" value="{VALUE_FIRSTNAME}" name="firstName" id="firstName" placeholder="First Name" class="first-name {CLASS_FIRSTNAME}" />
+						{ERROR_FIRSTNAME}
+					</div>
+					<div class="last-name optional large-6 cell">
+						<input type="Text" maxlength="150" size="30" value="{VALUE_LASTNAME}" name="lastName" id="lastName" placeholder="Last Name" class="last-name {CLASS_LASTNAME}" />
+						{ERROR_LASTNAME}
+					</div>
+				</div>
+				<div class="primary-contact-numbers grid-x grid-margin-x">
+					<div class="phone-home-number large-6 cell">
+						<div class="grid-x">
+							<div class="phone-home-area auto cell area-code"><input type="Text" maxlength="5" size="7" value="{VALUE_AREACODEPHONE}" name="phoneAreaCode" placeholder="Area Code" class="phone-home-area {CLASS_AREACODEPHONE}" />
+							</div>
+							<div class="phone-home small-8 cell phone-number">
+								<input type="Text" maxlength="15" value="{VALUE_PHONE}" name="phone" placeholder="Phone Number" class="phone-home {CLASS_PHONE}" />
+								{ERROR_PHONE}
+							</div>
+						</div>
+					</div>
+					<div class="fax-number large-6 cell">
+						<div class="grid-x">
+							<div class="fax-area auto cell area-code"><input type="Text" maxlength="5" size="7" value="{VALUE_AREACODEFAX}" name="AreaCodeFax" placeholder="Area Code" class="fax-area {CLASS_AREACODEFAX}" />
+							</div>
+							<div class="fax small-8 cell phone-number">
+								<input type="Text" maxlength="15" value="{VALUE_FAX}" name="Fax" placeholder="Fax Number" class="fax {CLASS_FAX}" />
+								{ERROR_FAX}
+							</div>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset id="shipping-info">
+				<legend>Ship To</legend>
+				<div class="street-address grid-x grid-margin-x">
+					<div class="shipping-address required large-6 cell">
+						<input type="Text" maxlength="250" size="30" value="{VALUE_SHIPPING_ADDRESS1}" name="shipping_address1" id="shipping_address1" placeholder="Street Address" class="shipping-address {CLASS_SHIPPING_ADDRESS1}" />
+						{ERROR_SHIPPING_ADDRESS1}
+					</div>
+					<div class="shipping-address-2 optional large-6 cell">
+						<input type="Text" maxlength="250" size="30" value="{VALUE_SHIPPING_ADDRESS2}" name="shipping_address2" id="shipping_address2" placeholder="Apt, Suite, Bldg. (Optional)" class="shipping-address-2 {CLASS_SHIPPING_ADDRESS2}" />
+						{ERROR_SHIPPING_ADDRESS2}
+					</div>
+				</div>
+
+				<div class="grid-x grid-margin-x">
+					<div class="city required large-3 cell">
+						<input type="Text" maxlength="250" value="{VALUE_SHIPPING_CITY}" name="shipping_city" id="shipping_city" placeholder="City" class="shipping-city {CLASS_SHIPPING_CITY}" />
+						{ERROR_SHIPPING_CITY}
+					</div>
+					<div class="country required large-3 cell">
+						{SELECT_SHIPPING_COUNTRY}
+						{ERROR_SHIPPING_COUNTRY}
+					</div>
+					<div class="state province required large-3 cell">
+						{SELECT_SHIPPING_PROVINCE}
+						{ERROR_SHIPPING_PROVINCE}
+					</div>
+					<div class="required header large-3 cell">
+						<input id="shipping_regionCode" type="Text" maxlength="250" value="{VALUE_SHIPPING_POSTALCODE}" name="shipping_regionCode" placeholder="Zip Code" class="postal-code zip-code shipping-postal-code shipping-zip-code {CLASS_SHIPPING_POSTALCODE}" />
+						{ERROR_SHIPPING_POSTALCODE}
+					</div>
+				</div>
+				<div class="shipping-phone-number grid-x grid-margin-x">
+					<div class="phone-shipping phone-day large-6 cell">
+						<div class="grid-x">
+							<div class="phone-day-area phone-shipping-area auto cell area-code"><input type="Text" maxlength="5" size="7" value="{VALUE_SHIPPING_AREACODE}" name="shipping_phoneAreaCode" placeholder="Area Code" class="areacode-phone-shipping {CLASS_SHIPPING_AREACODE}" />
+							</div>
+							<div class="phone-day phone-shipping small-8 cell phone-number"><input type="Text" maxlength="15" value="{VALUE_SHIPPING_PHONE}" name="shipping_phone" placeholder="Alternate Phone Number (Optional)" class="phone-shipping {CLASS_SHIPPING_PHONE}" /></div>
+							{ERROR_SHIPPING_PHONE}
+						</div>
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset id="billing-info">
+				<legend>Bill To</legend>
+				<div class="use-shipping-address grid-x grid-margin-x">
+					<div class="cell"><label for="UseShipping">Same as Shipping Address <input type="checkbox" {VALUECHECKED} value="yes" name="UseShipping" id="UseShipping" class="custom checkbox {VALUECHECKEDCSS}" onclick="usingShippingCheckBox(this);" /></label></div>
+				</div>
+				<div class="billing-address-form" {BILLING_FORM_STYLES}>
+					<div class="street-address grid-x grid-margin-x">
+						<div class="billing-address required large-6 cell">
+							<input type="Text" maxlength="250" size="150" value="{VALUE_BILLING_ADDRESS1}" name="billing_address1" id="billing_address1" placeholder="Street Address" class="billing-address {CLASS_BILLING_ADDRESS1}" {DISABLED} />
+							{ERROR_BILLING_ADDRESS1}
+						</div>
+						<div class="billing-address-2 optional large-6 cell">
+							<input type="Text" maxlength="250" size="150" value="{VALUE_BILLING_ADDRESS2}" name="billing_address2" id="billing_address2" placeholder="Apt, Suite, Bldg. (Optional)" class="billing-address-2 {CLASS_BILLING_ADDRESS2}" {DISABLED} />
+							{ERROR_BILLING_ADDRESS2}
+						</div>
+					</div>
+
+					<div class="grid-x grid-margin-x">
+						<div class="city required large-3 cell">
+							<input type="Text" maxlength="250" value="{VALUE_BILLING_CITY}" name="billing_city" id="billing_city" placeholder="City" class="billing-city {CLASS_BILLING_CITY}" {DISABLED} />
+							{ERROR_BILLING_CITY}
+						</div>
+						<div class="country required large-3 cell">
+							{SELECT_BILLING_COUNTRY}
+							{ERROR_BILLING_COUNTRY}
+						</div>
+						<div class="state province required large-3 cell">
+							{SELECT_BILLING_PROVINCE}
+							{ERROR_BILLING_PROVINCE}
+						</div>
+						<div class="required header large-3 cell">
+							<input id="billing_regionCode" type="Text" maxlength="250" value="{VALUE_BILLING_POSTALCODE}" name="billing_regionCode" placeholder="Zip Code" class="billing-postalcode {CLASS_BILLING_POSTALCODE}" {DISABLED} />
+							{ERROR_BILLING_POSTALCODE}
+						</div>
+					</div>
+
+					<div class="phone-billing-number grid-x grid-margin-x">
+						<div class="large-6 cell">
+							<div class="grid-x">
+								<div class="phone-billing-area auto cell area-code"><input type="Text" maxlength="3" size="7" value="{VALUE_BILLING_AREACODE}" name="billing_phoneAreaCode" placeholder="Area Code" class="areacode-phone {CLASS_BILLING_AREACODE}" {DISABLED} /></div>
+								<div class="phone-billing small-8 cell phone-number"><input type="Text" maxlength="10" value="{VALUE_BILLING_PHONE}" name="billing_phone" placeholder="Billing Phone (Optional)" class="phone {CLASS_BILLING_PHONE}" {DISABLED} /></div>
+								{ERROR_BILLING_PHONE}
+							</div>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset id="personal-info">
+				<legend>Personal Information<span class="foot-note">*</span> {PRESCRIPTION_REQUIRED_MSG}</legend>
+				<div class="item grid-x grid-margin-x">
+					<div class="large-6 cell">
+						<div class="birthdate">
+							<div class="grid-x grid-margin-x">
+								<label class="large-12 cell">Birth Date</label>
+								<div class="small-5 cell">{SELECT_BIRTHDATE_MONTH}</div>
+								<div class="small-3 cell"><input type="TEXT" maxlength="2" size="2" placeholder="dd" value="{VALUE_BIRTHDATE_DAY}" name="BirthDate_DAY" class="birthdate-day {CLASS_BIRTHDATE_DAY}">
+								</div>
+								<div class="small-4 cell"><input type="TEXT" maxlength="4" size="4" placeholder="yyyy" value="{VALUE_BIRTHDATE_YEAR}" name="BirthDate_YEAR" class="birthdate-year {CLASS_BIRTHDATE_YEAR}">
+								</div>
+							</div>
+							{ERROR_BIRTHDATE}
+						</div>
+					</div>
+					<div class="sex-info large-4 cell end">
+						<div class="grid-x grid-margin-x">
+							<div class="large-12 cell">
+								<label>Sex</label>
+								{SELECT_SEX}
+								{ERROR_SEX}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="item grid-x grid-margin-x">
+					<div class="height-info large-6 cell">
+						<div class="grid-x grid-margin-x">
+							<div class="large-12 cell">
+								<div class="grid-x grid-margin-x">
+									<div class="large-12 cell">
+										<label>Height (Feet/Inches)</label>
+									</div>
+								</div>
+								<div class="grid-x grid-margin-x">
+									<div class="small-6 cell">
+										{SELECT_HEIGHTFEET}
+									</div>
+									<div class="small-6 cell end expand">
+										{SELECT_HEIGHTINCHES}
+									</div>
+									<div class="large-12 cell">
+										{ERROR_HEIGHT}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="weight-info large-3 cell end">
+						<div class="grid-x grid-margin-x">
+							<div class="large-12 cell">
+								<label>Weight</label>
+								<input class="weight {CLASS_WEIGHT}" type="Text" maxlength="15" size="5" value="{VALUE_WEIGHT}" name="Weight" placeholder="(lbs)" />
+								{ERROR_WEIGHT}
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- BEGIN: profileQuestions -->
+				<hr />
+				<div class="grid-x grid-margin-x">
+					<!-- BEGIN: childResistantPackaging -->
+					<div class="small-12 medium-6 cell">
+						<div class="child_resistant_packaging grid-x" role="radiogroup">
+							<div class="cell">
+								<label>Do you require child resistant packaging?</label>&nbsp;
+								<input type="radio" name="child_resistant_packaging" id="child_resistant_packaging_yes" value="yes" required><label for="child_resistant_packaging_yes">Yes</label>
+								<input type="radio" name="child_resistant_packaging" id="child_resistant_packaging_no" value="no" required><label for="child_resistant_packaging_no">No</label>
+								{ERROR_CHILDRESISTANTPKG}
+							</div>
+						</div>
+					</div>
+					<!-- END: childResistantPackaging -->
+					<!-- BEGIN: callForRefills -->
+					<div class="small-12 medium-6 cell">
+						<div class="call_for_refills grid-x" role="radiogroup">
+							<div class="cell">
+								<label>Call/Email for refills?</label>&nbsp;
+								<input type="radio" name="call_for_refills" id="call_for_refills_yes" value="yes" required><label for="call_for_refills_yes">Yes</label>
+								<input type="radio" name="call_for_refills" id="call_for_refills_no" value="no" required><label for="call_for_refills_no">No</label>
+								{ERROR_REFILLNOTIFICATION}
+							</div>
+						</div>
+					</div>
+					<!-- END: callForRefills -->
+				</div>
+				<!-- END: profileQuestions -->
+			</fieldset>
+			<div>
+				<input type="submit" class="button" value="Create Account" name="action" />
+			</div>
+		</form>
+		{RESULT_MESSAGES}
+	</div>
+	<!-- page-register-form -->
+</div>
+<!-- END: page -->

@@ -1,0 +1,30 @@
+.pw-reorder {
+	.drug-result {
+		.drug-type {
+			display: none;
+		}
+td,
+th {
+
+	&.drug-icons,
+	&.drug-type,
+	&.strength,
+	&.quantity {
+				text-align: center;
+			}
+			&.price {
+				text-align: right;
+			}
+		}
+		.medicationHeading {
+			padding-bottom: 0;
+			h3 {
+				margin: 0;
+			}
+		}
+		.prescriptionNumber {
+			padding-bottom: 0;
+			text-align: right;
+		}
+	}
+}

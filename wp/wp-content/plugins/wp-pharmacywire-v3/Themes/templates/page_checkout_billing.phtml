@@ -1,0 +1,303 @@
+<!-- BEGIN: page -->
+<div class="pw-pharmacy-wrap pwire-checkout pw-checkout-billing container">
+
+	<div class="infor-panel billing">
+		<!-- Start page content here -->
+
+		<!-- BEGIN: BILLING_INFO -->
+		<div class="billing-info-panel container">
+			<div>
+				<div class="large-12 columns">
+					<h1 id="login-new-title">Billing Info</h1>
+				</div>
+			</div>
+			<form name="frmCart" id="frmCheckout" method="post" action="{ADD_TO_CART}">
+				<input type="hidden" name="status" id="status" value="billing" />
+				<input type="hidden" name="action" id="action" />
+				<input type="hidden" name="methodtype" id="methodtype" value="creditcard" />
+				<div class="billing-details">
+					<div class="billing-address">
+						<div class="frmBilling">
+							<fieldset>
+								<legend>Bill To</legend>
+								<div id="billing-address-option grid-x grid-margin-x"
+									class="use-shipping-address grid-x grid-margin-x">
+									<div class="large-12 cell">
+										<input type="hidden" id="billing_useShippingAddress"
+											name="billing_useShippingAddress" value="{USESHIPPINGFORBILLING}" />
+										<label for="UseShipping">Same as Shipping Address <input type="checkbox"
+												{VALUECHECKED} value="yes" tabindex="10" name="UseShipping"
+												id="UseShipping" class="custom checkbox {VALUECHECKEDCSS}"
+												onclick="usingShippingCheckBox(this);" /></label>
+									</div>
+								</div>
+								<div class="billing-address-form" {BILLING_FORM_STYLES}>
+									<div class="large-12 columns">
+										<div class="street-address grid-x grid-margin-x">
+											<div class="billing-address required large-6 cell">
+												<input type="Text" maxlength="250" size="150" tabindex="20"
+													value="{VALUE_ADDRESS1}" name="Address1" id="Address1"
+													placeholder="Street Address"
+													class="billing-address {CLASS_BILLING_ADDRESS1}" {DISABLED} />
+												{ERROR_BILLING_ADDRESS1}
+											</div>
+											<div class="billing-address-2 optional large-6 cell">
+												<input type="Text" maxlength="250" size="150" tabindex="30"
+													value="{VALUE_ADDRESS2}" name="Address2" id="Address2"
+													placeholder="Apt, Suite, Bldg. (Optional)"
+													class="billing-address-2 {CLASS_BILLING_ADDRESS2} optional"
+													{DISABLED} />
+												{ERROR_BILLING_ADDRESS2}
+											</div>
+										</div>
+
+										<div class="grid-x grid-margin-x">
+											<div class="city required large-3 cell">
+												<input type="Text" maxlength="250" tabindex="40" value="{VALUE_CITY}"
+													name="City" id="City" placeholder="City"
+													class="billing-city {CLASS_BILLING_CITY}" {DISABLED} />
+												{ERROR_BILLING_CITY}
+											</div>
+											<div class="country required large-3 cell">
+												{SELECT_BILLING_COUNTRY}
+												{ERROR_BILLING_COUNTRY}
+											</div>
+											<div class="state province required large-3 cell">
+												{SELECT_BILLING_PROVINCE}
+												{ERROR_BILLING_PROVINCE}
+											</div>
+											<div class="required header large-3 cell">
+												<input type="Text" maxlength="250" tabindex="70"
+													value="{VALUE_POSTALCODE}" name="PostalCode"
+													placeholder="Postal Code"
+													class="billing-postalcode {CLASS_BILLING_POSTALCODE}" {DISABLED} />
+												{ERROR_BILLING_POSTAL_CODE}
+											</div>
+										</div>
+
+										<div class="phone-home grid-x grid-margin-x">
+											<div class="large-6 cell">
+												<div class="grid-x">
+													<div class="phone-home-area area-code auto cell"><input type="Text"
+															maxlength="3" tabindex="80" size="7"
+															value="{VALUE_AREACODEPHONE}" name="phoneAreaCode"
+															placeholder="Area Code"
+															class="areacode-phone {CLASS_BILLING_AREACODE} optional" />
+													</div>
+													<div class="phone-home phone-number large-8 cell"><input type="Text"
+															maxlength="10" tabindex="90" value="{VALUE_PHONE}"
+															name="phone" placeholder="Billing Phone (Optional)"
+															class="phone {CLASS_BILLING_PHONE} optional" /></div>
+													{ERROR_BILLING_PHONE}
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="billing-address-preview container" {BILLING_PREVIEW_STYLES}>
+									<div class="row">
+										<div class="preview-billing-address large-12 columns">{PREVIEW_BILLING_ADDRESS1}
+										</div>
+									</div>
+									<div class="row">
+										<div class="preview-billing-address2 large-12 columns">
+											{PREVIEW_BILLING_ADDRESS2}</div>
+									</div>
+									<div class="row">
+										<div class="large-12 columns"><span
+												class="preview-billing-city">{PREVIEW_BILLING_CITY}</span>, <span
+												class="preview-billing-province">{PREVIEW_BILLING_PROVINCE}</span> <span
+												class="preview-billing-country">{PREVIEW_BILLING_COUNTRY}</span></div>
+									</div>
+									<div class="row">
+										<div class="preview-billing-postalcode large-12 columns">
+											{PREVIEW_BILLING_POSTALCODE}</div>
+									</div>
+									<div class="row">
+										<div class="preview-billing-postalcode large-12 columns">{PREVIEW_BILLING_PHONE}
+										</div>
+									</div>
+								</div>
+							</fieldset>
+							<!-- BEGIN: METHOD -->
+							<fieldset id="payment-method-selected">
+								<legend>Payment</legend>
+								<div class="method grid-x grid-margin-x">
+									<div class="large-12 cell">
+										<select onchange="changePaymentMethod()" name="PaymentMethod" tabindex="100"
+											id="PaymentMethod"
+											class="cboMethod custom dropdown expand">{OPTION_PAYMENT_METHOD}</select>
+									</div>
+								</div>
+								<!-- BEGIN: DRAFT -->
+								<div class="method-draft row" {DRAFT_VISIBILITY}>
+									<div class="draft-info large-6 columns">
+										<div class="title">Please mail a check, draft, or money order to:</div>
+										<strong>{PW_NAME}</strong><br />
+										<span>{PW_ADDRESS}</span><br />
+										<span>{PW_CITY}, {PW_PROVINCE} {PW_COUNTRY}</span><br />
+										<span>{PW_POSTAL_CODE}</span>
+									</div>
+								</div>
+								<!-- END: DRAFT -->
+								<!-- BEGIN: EFT -->
+								<div class="method-eft" {EFT_VISIBILITY}>
+									<div class="large-12 columns">
+										<div class="name grid-x grid-margin-x">
+											<div class="name-on-cheque required large-6 cell">
+												<input type="Text" maxlength="150" size="30" tabindex="110"
+													value="{VALUE_NAME_ON_CHEQUE}" name="NameOnCheque" id="NameOnCheque"
+													placeholder="Name (on cheque)"
+													class="name-on-cheque {CLASS_NAME_ON_CHEQUE}" />
+												{ERROR_NAME_ON_CHEQUE}
+											</div>
+										</div>
+										<div class="method-eft-bank grid-x grid-margin-x">
+											<div class="bank-name large-6 cell">
+												<input type="Text" maxlength="50" value="{BANK_NAME}" id="BankName"
+													name="BankName" placeholder="Bank Name" tabindex="120"
+													class="bank-name {CLASS_BANK_NAME}">
+												{ERROR_BANK_NAME}
+											</div>
+											<div class="bank-city large-3 cell">
+												<input type="Text" maxlength="50" value="{BANK_CITY}" id="BankCity"
+													name="BankCity" placeholder="Bank City" tabindex="130"
+													class="bank-city {CLASS_BANK_CITY}">
+												{ERROR_BANK_CITY}
+											</div>
+											<div class="bank-state large-3 cell">
+												<input type="Text" maxlength="50" value="{BANK_STATE}" id="BankState"
+													name="BankState" placeholder="Bank State" tabindex="140"
+													class="bank-state {CLASS_BANK_STATE}">
+												{ERROR_BANK_STATE}
+											</div>
+										</div>
+										<div class="branch-account-cheque grid-x grid-margin-x">
+											<div class="branch-transit large-4 cell">
+												<input type="Text" maxlength="50" value="{BRANCH_TRANSIT}"
+													id="BranchTransit" name="BranchTransit" placeholder="Transit Number"
+													tabindex="150" class="branch_transit {CLASS_BRANCH_TRANSIT}">
+												{ERROR_BRANCH_TRANSIT}
+											</div>
+											<div class="cheque-account large-4 cell">
+												<input type="Text" maxlength="50" value="{CHEQUE_ACCOUNT}"
+													id="ChequeAccount" name="ChequeAccount" placeholder="Account Number"
+													tabindex="160" class="cheque-account {CLASS_CHEQUE_ACCOUNT}">
+												{ERROR_CHEQUE_ACCOUNT}
+											</div>
+											<div class="cheque-number large-4 cell">
+												<input type="Text" maxlength="50" value="{CHEQUE_NUMBER}"
+													id="ChequeNumber" name="ChequeNumber" placeholder="Cheque Number"
+													tabindex="170" class="cheque-number {CLASS_CHEQUE_NUMBER}">
+												{ERROR_CHEQUE_NUMBER}
+											</div>
+										</div>
+										<!--
+										<div class="identity-verification row">
+											<div class="identity-card-type large-4 columns">
+												<select name="IdentityType" id="IdentityType" tabindex="180" class="identity-card-type optional {CLASS_IDENTITY_CARD_TYPE}">
+													{IDENTITY_CARD_TYPE}
+												</select>
+												{ERROR_IDENTITY_CARD_TYPE}
+											</div>
+											<div class="identity-number large-4 columns">
+												<input type="Text" maxlength="50" value="{IDENTITY_NUMBER}" id="IdentityNumber" name="IdentityNumber" placeholder="ID Number" tabindex="190" class="identity-number optional {CLASS_IDENTITY_NUMBER}">
+												{ERROR_IDENTITY_NUMBER}
+											</div>
+											<div class="identity-state large-4 columns">
+												<select name="IdentityState" id="IdentityState" tabindex="200" class="identity-state-type optional {CLASS_IDENTITY_STATE_TYPE}">
+													{IDENTITY_STATE_TYPE}
+												</select>
+												{ERROR_IDENTITY_STATE_TYPE}
+											</div>
+										</div>
+-->
+										<div class="note row">
+											<div class="large-12 columns">Note: You will not be charged until we are
+												ready to ship your order.</div>
+										</div>
+									</div>
+								</div>
+								<!-- END: EFT -->
+								<!-- BEGIN: CREDIT_CARD -->
+								<div class="method-credit-card grid-x grid-margin-x" {CREDIT_CARD_VISIBILITY}>
+									<div class="large-12 cell">
+										<div class="name grid-x grid-margin-x">
+											<div class="first-name required large-6 cell">
+												<input type="Text" maxlength="150" size="30" tabindex="110"
+													value="{VALUE_FIRSTNAME}" name="firstName" id="firstName"
+													placeholder="First Name (on credit card)"
+													class="first-name {CLASS_FIRSTNAME}" />
+												{ERROR_FIRSTNAME}
+											</div>
+											<div class="shipping-address-2 optional large-6 cell">
+												<input type="Text" maxlength="150" size="30" tabindex="120"
+													value="{VALUE_LASTNAME}" name="lastName" id="lastName"
+													placeholder="Last Name (on credit card)"
+													class="last-name {CLASS_LASTNAME}" />
+												{ERROR_LASTNAME}
+											</div>
+										</div>
+										<div class="method-credit-card grid-x grid-margin-x">
+											<div class="credit-card-type large-3 cell">
+												<select name="CreditCardType" id="CreditCardType" class="cboMethod"
+													tabindex="130" class="credit-card-type {CLASS_CREDIT_CARD_TYPE}">
+													{CREDIT_CARD_TYPE}
+												</select>
+												{ERROR_CREDIT_CARD_TYPE}
+											</div>
+											<div class="credit-card-number large-6 cell">
+												<input type="Text" maxlength="16" value="{CREDIT_CARD_NUMBER}"
+													id="CreditCardNumber" name="CreditCardNumber"
+													placeholder="Credit Card Number" tabindex="140"
+													class="credid-card-number {CLASS_CREDIT_CARD_NUMBER}">
+												{ERROR_CREDIT_CARD_NUMBER}
+											</div>
+											<div class="credit-card-cvv2 large-3 cell">
+												<input class="has-tip tip-bottom" type="Text" maxlength="4"
+													value="{CVV_NUMBER}" id="CvvNumber" name="CvvNumber"
+													placeholder="Security Code"
+													title="Your Card Verification Code are the 3 digits located to the right of your signature on the back of your card or the 4 digits located on the front right of your American Express card. This added security measure ensures that you are in possession of your credit card and decreases the possibility of credit card fraud."
+													tabindex="150" class="credit-card-cvv2 {CLASS_CREDIT_CARD_CVV2}">
+												{ERROR_CVV_NUMBER}
+											</div>
+										</div>
+										<div class="credit-card-expiry grid-x grid-margin-x">
+											<div class="credit-card-expiry-month large-3 cell">
+												<label>Expiry Month</label>
+												<select name="ExpiryMonth" tabindex="160"
+													class="credit-card-expiry-month {CLASS_EXPIRY_MONTH} custom dropdown expand">{EXPIRY_MONTH}</select>
+											</div>
+											<div class="credit-card-expiry-year large-3 cell">
+												<label>Expiry Year</label>
+												<select name="ExpiryYear" tabindex="170"
+													class="credit-card-expiry-year {CLASS_EXPIRY_YEAR} custom dropdown expand">
+													{EXPIRY_YEAR}
+												</select>
+												{ERROR_EXPIRATION_DATE}
+											</div>
+										</div>
+										<div class="note grid-x grid-margin-x">
+											<div class="large-12 cell">Note: You will not be charged until we are ready
+												to ship your order.</div>
+										</div>
+									</div>
+								</div>
+								<!-- END: CREDIT_CARD -->
+							</fieldset>
+							<!-- END: METHOD -->
+							<div class="control review-order">
+								<input class="button billing-checkout-button" type="button" name="btnCheckout"
+									id="btnCheckout" tabindex="180" value="Review Order" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+			<!-- End page content here -->
+		</div>
+		<!-- END: BILLING_INFO -->
+	</div>
+</div>
+<!-- END: page -->

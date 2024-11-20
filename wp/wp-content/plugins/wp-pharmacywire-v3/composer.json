@@ -1,0 +1,8 @@
+{
+    "require": {
+        "wixel/gump": "^1.11"
+    },
+    "require-dev": {
+        "paulthewalton/acf-stubs": "*"
+    }
+}

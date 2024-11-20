@@ -1,0 +1,662 @@
+<!-- BEGIN: PAGE -->
+
+<!-- Naming convention: http://getbem.com/naming/ -->
+
+<div class="pw-pharmacy-wrap pw_checkout content">
+
+	<div class="inner-content grid-x grid-margin-x grid-padding-x">
+
+		<div class="checkout-main small-12 large-12 medium-12 cell">
+
+			<form id="checkout_form" class="checkout_form pw_autosave" data-abide data-validate-on-blur="true" novalidate>
+
+				<div data-abide-error class="alert callout checkout-error" aria-live="assertive" style="display: none;">
+					<p><i class="fi-alert"></i> There are some errors in your order information. <br />Please review the
+						form fields, fix any errors, and submit again.</p>
+				</div>
+
+				<!-- BEGIN: NEW_ACCOUNT -->
+
+				<div class="contact-info">
+
+					<fieldset>
+						<legend>
+							<h3>Account Setup</h3>
+						</legend>
+						<div class="item grid-x grid-margin-x">
+							<div class="small-12 large-6 cell">
+								<label class="right inline">Email</label>
+								<input id="username" type="text" maxlength="50" class="username" name="Username" placeholder="Email Address" pattern="email" autocomplete="username" required>
+								<label class="form-error" data-form-error-for="username">Valid email address is
+									required.</label>
+							</div>
+							<div class="small-12 large-6 cell">
+								<label class="right inline">Confirm Email Address</label>
+								<input id="username_confirm" type="text" maxlength="50" class="username" name="ConfirmUsername" placeholder="Confirm Email Address" pattern="email" autocomplete="username" data-equalto="username" required>
+								<label class="form-error" data-form-error-for="username_confirm">Confirm email address
+									is required and email addresses must match.</label>
+							</div>
+						</div>
+						<div class="item grid-x grid-margin-x">
+							<div class="small-12 cell">
+								<div class="form-hint">To conform with our Strong Password policy, you are required to
+									use a sufficiently strong password. Password must be more than 7 characters.</div>
+							</div>
+							<div class="small-12 medium-6 cell">
+								<label class="right inline">Password</label>
+								<input id="password" type="password" name="Password" class="password" placeholder="Password" autocomplete="new-password" required>
+								<div class="progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuetext="0 percent" aria-valuemax="100">
+									<span class="progress-meter" style="width: 0%">
+										<p class="progress-meter-text"></p>
+									</span>
+								</div>
+								<label class="form-error" data-form-error-for="password">Valid password is
+									required.</label>
+							</div>
+							<div class="small-12 medium-6 cell">
+								<label class="right inline">Confirm Password</label>
+								<input id="password_confirm" type="password" name="ConfirmPassword" class="password password_confirm" placeholder="Password" autocomplete="new-password" data-equalto="password" required>
+								<label class="form-error" data-form-error-for="password_confirm">Confirm password is
+									required and passwords must match.</label>
+							</div>
+						</div>
+					</fieldset>
+
+					<fieldset>
+						<legend>
+							<h3>Personal Information</h3>
+						</legend>
+						<div class="name grid-x grid-margin-x">
+							<div class="first-name required large-6 cell">
+								<input type="text" maxlength="150" size="30" value="" id="firstName" name="firstName" placeholder="First Name" class="first-name placeholder" required>
+								<label class="form-error" data-form-error-for="firstName">First name is
+									required.</label>
+							</div>
+							<div class="last-name optional large-6 cell">
+								<input type="text" maxlength="150" size="30" value="" id="lastName" name="lastName" placeholder="Last Name" class="last-name placeholder" required>
+								<label class="form-error" data-form-error-for="lastName">Last name is required.</label>
+							</div>
+						</div>
+						<div class="customer-phone grid-x grid-margin-x">
+							<div class="phone-home large-6 cell">
+								<div class="grid-x">
+									<div class="phone-home-area auto cell area-code">
+										<input type="text" maxlength="10" size="7" value="" id="phoneAreaCode" name="phoneAreaCode" placeholder="Area Code" class="phone-home-area placeholder" required>
+										<label class="form-error" data-form-error-for="phoneAreaCode">Phone area code is
+											required.</label>
+									</div>
+									<div class="phone-home phone-number small-8 cell">
+										<input type="text" maxlength="20" value="" id="phone" name="phone" placeholder="Phone Number" class="phone-home placeholder" required>
+										<label class="form-error" data-form-error-for="phone">Phone number is
+											required.</label>
+									</div>
+								</div>
+							</div>
+							<div class="fax large-6 cell">
+								<div class="grid-x">
+									<div class="fax-area auto cell area-code"><input type="text" maxlength="10" size="7" value="" id="AreaCodeFax" name="AreaCodeFax" placeholder="Area Code Fax" class="fax-area placeholder"></div>
+									<div class="fax phone-number small-8 cell"><input type="text" maxlength="20" value="" id="Fax" name="Fax" placeholder="Fax Number (Optional)" class="fax placeholder"></div>
+								</div>
+							</div>
+						</div>
+						<div class="grid-x grid-margin-x">
+							<div class="birthdate large-4 cell">
+								<label>Birth Date</label>
+								<div class="grid-x">
+									<div class="birth-month medium-12 large-6 cell">
+										<select id="BirthDate_MONTH" name="BirthDate_MONTH" required>
+											<option value="1">January</option>
+											<option value="2">February</option>
+											<option value="3">March</option>
+											<option value="4">April</option>
+											<option value="5">May</option>
+											<option value="6">June</option>
+											<option value="7">July</option>
+											<option value="8">August</option>
+											<option value="9">September</option>
+											<option value="10">October</option>
+											<option value="11">November</option>
+											<option value="12">December</option>
+										</select>
+									</div>
+									<div class="birth-day medium-6 large-3 cell">
+										<input type="TEXT" maxlength="2" placeholder="dd" value="" id="BirthDate_DAY" name="BirthDate_DAY" required>
+									</div>
+									<div class="birth-year medium-6 large-3 cell">
+										<input type="TEXT" maxlength="4" placeholder="yyyy" value="" id="BirthDate_YEAR" name="BirthDate_YEAR" required>
+									</div>
+								</div>
+								<label class="form-error" data-form-error-for="BirthDate_DAY">Valid birth day is
+									required.</label>
+								<label class="form-error" data-form-error-for="BirthDate_YEAR">Valid birth year is
+									required.</label>
+							</div>
+							<div class="sex-selection-container large-2 cell">
+								<div class="grid-x">
+									<div class="cell">
+										<label class="inline">Sex</label>
+										<label for="sexM" class="sex sex-male radio-button inline"><input type="radio" id="sexM" name="Sex" value="M" required>male</label>
+									</div>
+									<div class="cell">
+										<label for="sexF" class="sex sex-female radio-button inline"><input type="radio" id="sexF" name="Sex" value="F" required>female</label>
+										<label class="form-error" data-form-error-for="sexM">Please make a
+											selection.</label>
+									</div>
+								</div>
+							</div>
+							<div class="height-weight large-4 cell">
+								<label class="inline">Height</label>
+								<div class="grid-x">
+									<div class="height-feet small-6 cell">
+										<select name="HeightFeet" id="HeightFeet" required>
+											<option value="-1">feet</option>
+											<option value="3">3 feet</option>
+											<option value="4">4 feet</option>
+											<option value="5">5 feet</option>
+											<option value="6">6 feet</option>
+											<option value="7">7 feet</option>
+										</select>
+									</div>
+									<div class="height-inches small-6 cell">
+										<select name="HeightInches" id="HeightInches" required>
+											<option value="0">0 inches</option>
+											<option value="1">1 inches</option>
+											<option value="2">2 inches</option>
+											<option value="3">3 inches</option>
+											<option value="4">4 inches</option>
+											<option value="5">5 inches</option>
+											<option value="6">6 inches</option>
+											<option value="7">7 inches</option>
+											<option value="8">8 inches</option>
+											<option value="9">9 inches</option>
+											<option value="10">10 inches</option>
+											<option value="11">11 inches</option>
+										</select>
+									</div>
+								</div>
+								<label class="form-error" id="height_error"></label>
+							</div>
+							<div class="large-2 cell">
+								<label class="inline">Weight</label>
+								<input id="Weight" name="Weight" type="text" maxlength="3" placeholder="lbs" required>
+								<label class="form-error" data-form-error-for="Weight">Please enter your weight in
+									pounds.</label>
+							</div>
+						</div>
+					</fieldset>
+
+				</div>
+				<!-- END: NEW_ACCOUNT -->
+
+				<!-- BEGIN: EXISTING_ACCOUNT -->
+				<!-- END: EXISTING_ACCOUNT -->
+
+				<!-- BEGIN: SUBMIT_ORDER -->
+				<div class="shipping-info">
+
+					<div class="update-address-fields">
+						<fieldset>
+							<legend>
+								<h3>Shipping Information</h3> <button class="change-address" type="button" style="display: none;">Change</button>
+							</legend>
+
+							<div class="selected-address-container">
+							</div>
+
+							<div class="address-form" style="display: none;">
+								<div class="street-address grid-x grid-margin-x">
+									<div class="shipping-address required large-6 cell">
+										<input type="text" maxlength="250" size="30" value="" name="shipping_address1" id="shipping_address1" placeholder="Street Address" class="shipping-address placeholder" required>
+										<label class="form-error" data-form-error-for="shipping_address1">Shipping
+											street address is required.</label>
+									</div>
+									<div class="shipping-address-2 optional large-6 cell">
+										<input type="text" maxlength="250" size="30" value="" name="shipping_address2" id="shipping_address2" placeholder="Apt, Suite, Bldg. (Optional)" class="shipping-address-2 placeholder">
+									</div>
+								</div>
+
+								<div class="grid-x grid-margin-x">
+									<div class="large-6 cell">
+										<div class="grid-x grid-margin-x">
+											<div class="city required large-6 cell">
+												<input type="text" maxlength="250" value="" name="shipping_city" id="shipping_city" placeholder="City" class="shipping-city placeholder" required>
+												<label class="form-error" data-form-error-for="shipping_city">Shipping
+													city is required.</label>
+											</div>
+											<div class="country large-6 cell">
+												<select name="shipping_country" id="shipping_country" class="shipping_country" required></select>
+												<label class="form-error" data-form-error-for="shipping_country">Shipping country is
+													required.</label>
+											</div>
+										</div>
+									</div>
+									<div class="large-6 cell">
+										<div class="grid-x grid-margin-x">
+											<div class="state province large-7 cell">
+												<select name="shipping_region" id="shipping_region" class="shipping_region" required></select>
+												<label class="form-error" data-form-error-for="shipping_region">Shipping
+													region is required.</label>
+											</div>
+											<div class="required header large-5 cell">
+												<input id="shipping_regionCode" type="text" maxlength="12" value="" name="shipping_regionCode" placeholder="Postal Code" class="shipping_regionCode regionCode placeholder" required>
+												<label class="form-error" data-form-error-for="shipping_regionCode">Shipping zip/region code
+													is required.</label>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="shipping-phone grid-x grid-margin-x">
+									<div class="phone-home large-6 cell">
+										<div class="grid-x">
+											<div class="phone-day-area auto cell area-code"><input id="shipping_phoneAreaCode" type="text" maxlength="10" size="7" value="" name="shipping_phoneAreaCode" placeholder="Area Code" class="areacode-phone-shipping placeholder"></div>
+											<div class="phone-day phone-number small-8 cell"><input id="shipping_phone" type="text" maxlength="20" value="" name="shipping_phone" placeholder="Phone Number (Optional)" class="phone-shipping placeholder"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+
+				</div>
+
+				<div class="billing">
+
+					<fieldset id="payment-method-selected">
+
+						<legend>
+							<h3>Billing Information</h3>
+						</legend>
+
+						<div class="billing_msg error"></div>
+
+						<div class="billing_method_radiogroup grid-x">
+							<div class="billing_method_select billing_method_select_creditCard">
+								<input type="radio" name="billing_type" id="billing_creditCard" value="creditCard" required>
+								<label for="billing_creditCard">Credit Card</label>
+							</div>
+							<div class="billing_method_select billing_method_select_draft">
+								<input type="radio" name="billing_type" id="billing_draft" value="draft" required>
+								<label for="billing_draft">Check</label>
+							</div>
+							<div class="billing_method_select billing_method_select_eft">
+								<input type="radio" name="billing_type" id="billing_eft" value="eft" required>
+								<label for="billing_eft">Electronic Check</label>
+							</div>
+							<label class="form-error">Select a billing method.</label>
+						</div>
+
+						<div class="billing_method billing_method_draft grid-x grid-margin-x" style="display: none;">
+							<div class="draft-info large-6 cell">
+								<div class="intro-message"></div>
+								<div class="mailing-address"></div>
+							</div>
+						</div>
+
+						<div class="billing_method billing_method_creditCard grid-x grid-margin-x" style="display: none;">
+							<div class="large-12 cell">
+								<div class="supported-credit-card-icons"></div>
+							</div>
+							<div class="large-12 cell">
+								<div class="name grid-x grid-margin-x">
+									<div class="first-name required large-6 cell">
+										<input type="text" maxlength="150" size="30" value="" name="billing_firstName" id="billing_firstName" placeholder="First Name (on credit card)" class="first-name" required>
+										<label class="form-error" data-form-error-for="billing_firstName">First name is
+											required.</label>
+									</div>
+									<div class="last-name required large-6 cell">
+										<input type="text" maxlength="150" size="30" value="" name="billing_lastName" id="billing_lastName" placeholder="Last Name (on credit card)" class="last-name" required>
+										<label class="form-error" data-form-error-for="billing_lastName">Last name is
+											required.</label>
+									</div>
+								</div>
+								<div class="method-credit-card grid-x grid-margin-x">
+									<div class="credit-card-number large-8 cell">
+										<input type="text" maxlength="20" value="" id="billing_creditCard_number" name="billing_creditCard_number" placeholder="Credit Card Number" class="credid-card-number placeholder" required pattern="card" data-validator="abideCreditCardValidator">
+										<label class="form-error" data-form-error-for="billing_creditCard_number">Credit
+											card number is required.</label>
+									</div>
+									<div class="credit-card-cvv2 large-4 cell">
+										<input class="has-tip tip-bottom placeholder" type="text" maxlength="4" value="" id="billing_creditCard_cvv" name="billing_creditCard_cvv" placeholder="Security Code" title="Your Card Verification Code are the 3 digits located to the right of your signature on the back of your card or the 4 digits located on the front right of your American Express card. This added security measure ensures that you are in possession of your credit card and decreases the possibility of credit card fraud." data-validator="abideCreditCard_CVV_Validator" required>
+										<label class="form-error" data-form-error-for="billing_creditCard_cvv">Credit
+											card CVV is required.</label>
+									</div>
+								</div>
+								<div class="credit-card-expiry grid-x grid-margin-x">
+									<div class="credit-card-expiry-month large-3 cell">
+										<label>Expiry Month</label>
+										<select id="billing_creditCard_expiryMonth" name="billing_creditCard_expiryMonth" class="credit-card-expiry-month custom dropdown expand" required>
+											<option selected="" value="01">January - 01</option>
+											<option value="02">February - 02</option>
+											<option value="03">March - 03</option>
+											<option value="04">April - 04</option>
+											<option value="05">May - 05</option>
+											<option value="06">June - 06</option>
+											<option value="07">July - 07</option>
+											<option value="08">August - 08</option>
+											<option value="09">September - 09</option>
+											<option value="10">October - 10</option>
+											<option value="11">November - 11</option>
+											<option value="12">December - 12</option>
+										</select>
+										<label class="form-error" data-form-error-for="billing_creditCard_expiryMonth">Credit card expiration
+											month is required.</label>
+									</div>
+									<div class="credit-card-expiry-year large-3 cell">
+										<label>Expiry Year</label>
+										<select id="billing_creditCard_expiryYear" name="billing_creditCard_expiryYear" class="credit-card-expiry-year custom dropdown expand" required>
+										</select>
+										<label class="form-error" data-form-error-for="billing_creditCard_expiryYear">Credit card expiration
+											year is required.</label>
+									</div>
+								</div>
+								<div class="note grid-x grid-margin-x">
+									<div class="large-12 cell"><i><b>Note:</b> You will not be charged until we are
+											ready to ship your order.</i></div>
+								</div>
+							</div>
+						</div>
+
+						<div class="billing_method billing_method_eft grid-x grid-margin-x" style="display: none;">
+							<div class="large-12 cell">
+								<div class="name grid-x grid-margin-x">
+									<div class="name-on-cheque required large-6 cell">
+										<input type="text" maxlength="150" size="30" value="" name="billing_cheque_name" id="billing_cheque_name" placeholder="Name (on cheque)" class="billing_cheque_name" required>
+										<label class="form-error" data-form-error-for="billing_cheque_name">Full name on
+											cheque is required.</label>
+									</div>
+								</div>
+								<div class="method-eft-bank grid-x grid-margin-x">
+									<div class="bank-name large-6 cell">
+										<input type="text" maxlength="50" value="" id="billing_bank_name" name="billing_bank_name" placeholder="Bank Name" class="billing_bank_name" required>
+										<label class="form-error" data-form-error-for="billing_bank_name">Bank name is
+											required.</label>
+									</div>
+									<div class="bank-city large-3 cell">
+										<input type="text" maxlength="50" value="" id="billing_bank_city" name="billing_bank_city" placeholder="Bank City" class="billing_bank_city" required>
+										<label class="form-error" data-form-error-for="billing_bank_city">Bank city is
+											required.</label>
+									</div>
+									<div class="bank-state large-3 cell">
+										<input type="text" maxlength="50" value="" id="billing_bank_state" name="billing_bank_state" placeholder="Bank State" class="billing_bank_state" required>
+										<label class="form-error" data-form-error-for="billing_bank_state">Bank state is
+											required.</label>
+									</div>
+								</div>
+								<div class="branch-account-cheque grid-x grid-margin-x">
+									<div class="branch-transit large-4 cell">
+										<input type="text" maxlength="50" value="" id="billing_bank_branchTransit" name="billing_bank_branchTransit" placeholder="Transit Number" class="billing_bank_branchTransit" required>
+										<label class="form-error" data-form-error-for="billing_bank_branchTransit">Transit number is
+											required.</label>
+									</div>
+									<div class="cheque-account large-4 cell">
+										<input type="text" maxlength="50" value="" id="billing_cheque_account" name="billing_cheque_account" placeholder="Account Number" class="billing_cheque_account" required>
+										<label class="form-error" data-form-error-for="billing_cheque_account">Account
+											number is required.</label>
+									</div>
+									<div class="cheque-number large-4 cell">
+										<input type="text" maxlength="50" value="" id="billing_cheque_number" name="billing_cheque_number" placeholder="Cheque Number" class="billing_cheque_number" required>
+										<label class="form-error" data-form-error-for="billing_cheque_account">Cheque
+											number is required.</label>
+									</div>
+								</div>
+								<div class="note grid-x grid-margin-x">
+									<div class="large-12 cell">Note: You will not be charged until we are ready to ship
+										your order.</div>
+								</div>
+							</div>
+						</div>
+
+						<div id="billingAddress" style="display: none;">
+							<hr />
+							<h3>Billing Address</h3>
+							<div id="billing-address-option" class="use-shipping-address grid-x grid-margin-x">
+								<div class="large-12 cell">
+									<label for="billing_useShippingAddress">Same as Shipping Address <input type="checkbox" value="yes" name="billing_useShippingAddress" id="billing_useShippingAddress" class="billing_useShippingAddress custom checkbox checked"></label>
+								</div>
+							</div>
+							<div class="billing-address-form">
+								<div class="large-12 cell">
+									<div class="street-address grid-x grid-margin-x">
+										<div class="billing-address required large-6 cell">
+											<input type="text" maxlength="250" size="150" value="" name="billing_address1" id="billing_address1" placeholder="Street Address" class="billing-address placeholder" required>
+											<label class="form-error" data-form-error-for="billing_address1">Billing
+												address is required.</label>
+										</div>
+										<div class="billing-address-2 optional large-6 cell">
+											<input type="text" maxlength="250" size="150" value="" name="billing_address2" id="billing_address2" placeholder="Apt, Suite, Bldg. (Optional)" class="billing-address-2 optional placeholder">
+										</div>
+									</div>
+
+									<div class="grid-x grid-margin-x">
+										<div class="city required large-3 cell">
+											<input type="text" maxlength="250" value="" name="billing_city" id="billing_city" placeholder="City" class="billing-city placeholder" required>
+											<label class="form-error" data-form-error-for="billing_city">Billing city is
+												required.</label>
+										</div>
+										<div class="country required large-3 cell">
+											<select name="billing_country" id="billing_country" class="billing_country" required></select>
+											<label class="form-error" data-form-error-for="billing_country">Billing
+												country is required.</label>
+										</div>
+										<div class="state province required large-3 cell">
+											<select name="billing_region" id="billing_region" class="billing_region" required></select>
+											<label class="form-error" data-form-error-for="billing_region">Billing
+												region is required.</label>
+										</div>
+										<div class="required header large-3 cell">
+											<input type="text" maxlength="250" value="" id="billing_regionCode" name="billing_regionCode" placeholder="Postal Code" class="billing_regionCode regionCode placeholder" required>
+											<label class="form-error" data-form-error-for="billing_regionCode">Billing
+												zip/region code is required.</label>
+										</div>
+									</div>
+
+									<div class="phone-home grid-x grid-margin-x">
+										<div class="large-6 cell">
+											<div class="grid-x">
+												<div class="phone-home-area area-code auto cell"><input type="text" maxlength="10" size="7" value="" id="billing_phoneAreaCode" name="billing_phoneAreaCode" placeholder="Area Code" class="areacode-phone optional placeholder"></div>
+												<div class="phone-home phone-number large-8 cell"><input type="text" maxlength="20" value="" id="billing_phone" name="billing_phone" placeholder="Billing Phone (Optional)" class="phone optional placeholder"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+				</div>
+
+
+				<div class="prescription">
+					<div class="rxSubmission">
+						<fieldset>
+							<legend>
+								<h3>How will you send in your Prescription?</h3>
+							</legend>
+
+							<div class="rxSubmission_method"></div>
+							<label class="form-error" data-form-error-for="rx_submission_upload">Prescription submission
+								method is required.</label>
+						</fieldset>
+					</div>
+				</div>
+
+
+				<div class="order-questionnaire" style="display: none;">
+					<div class="grid-x grid-margin-x">
+						<div class="cell">
+							<fieldset>
+								<legend>
+									<h3>Order Questions</h3>
+								</legend>
+								<div class="order-questions grid-x grid-margin-x">
+								</div>
+							</fieldset>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="medical-questionnaire" style="display: none;">
+					<div class="grid-x grid-margin-x">
+						<div class="cell">
+							<fieldset>
+								<legend>
+									<h3>Medical Questionnaire</h3>
+								</legend>
+								<div class="medical-questionnaire-form">
+									<p class="note">If you answer 'yes' to any of the following questions, please
+										provide details.</p>
+									<ol class="medical-questions">
+									</ol>
+								</div>
+							</fieldset>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="order-comments">
+					<fieldset>
+						<legend>
+							<h3>Order Comments</h3>
+						</legend>
+						<div class="order_comments">
+							<textarea id="order_comments" name="order_comments" placeholder="Add comments to your order. (Optional)" rows="3"></textarea>
+						</div>
+					</fieldset>
+				</div>
+
+
+				<div class="general-cart-messages callout secondary" style="display: none;"></div>
+
+				<div class="order-submission">
+					<div class="terms">
+						<input id="agree" name="agree" value="true" type="checkbox" required><label class="agree" for="agree">I have read and agree to the <a href="/terms-of-use" target="winout">Terms of
+								Use</a> and <a href="/privacy-policy" target="winout">Privacy Policy.</a> </label>
+					</div>
+					<div class="place-order">
+						<button id="SubmitOrder" name="SubmitOrder" class="button" type="submit">Submit Order</button>
+					</div>
+				</div>
+
+				<div data-abide-error class="alert callout checkout-error" aria-live="assertive" style="display: none;">
+					<p><i class="fi-alert"></i> There are some errors in your order information. <br />Please review the
+						form fields, fix any errors, and submit again.</p>
+				</div>
+
+				<!-- END: SUBMIT ORDER -->
+
+			</form>
+
+			<div class="cart-response" style="display: none;"></div>
+
+			<div class="rx-submission-container" style="display: none;">
+				<hr />
+				<div class="rx-submission-fax rx-submission-method" style="display: none;">
+					<h3>To fax your prescription:</h3>
+					<div class="submission-instructions"></div>
+				</div>
+				<div class="rx-submission-email rx-submission-method" style="display: none;">
+					<h3>To Email your prescription:</h3>
+					<div class="submission-instructions"></div>
+				</div>
+				<div class="rx-submission-doctor rx-submission-method" style="display: none;">
+					<h3>Doctor contact information:</h3>
+					<p>Please submit your doctor's contact information so that we can contact them for your
+						prescription.</p>
+					<form id="doctor_contact_form" class="doctor_contact_form" data-abide data-validate-on-blur="true" novalidate>
+						<div class="grid-x">
+							<div class="cell">
+								<input type="text" maxlength="150" size="30" value="" id="doctor_name" name="doctor_name" placeholder="Doctor Name" class="doctor-name placeholder" required>
+								<label class="form-error" data-form-error-for="doctor_name">Doctor name is
+									required.</label>
+							</div>
+						</div>
+						<div class="grid-x">
+							<div class="doctor-area auto cell area-code">
+								<input type="text" maxlength="10" size="7" value="" id="doctor_phoneAreaCode" name="doctor_phoneAreaCode" placeholder="Area Code" class="doctor-phone-area placeholder" required>
+								<label class="form-error" data-form-error-for="doctor_phoneAreaCode">Doctor phone number
+									area code is required.</label>
+							</div>
+							<div class="doctor-phone phone-number small-8 cell">
+								<input type="text" maxlength="20" value="" id="doctor_phone" name="doctor_phone" placeholder="Phone Number" class="doctor-phone placeholder" required>
+								<label class="form-error" data-form-error-for="doctor_phone">Doctor phone number is
+									required.</label>
+							</div>
+						</div>
+						<div class="grid-x doctor-fax">
+							<div class="doctor-fax-area auto cell area-code"><input type="text" maxlength="10" size="7" value="" id="doctor_faxAreaCode" name="doctor_faxAreaCode" placeholder="Area Code Fax" class="doctor-fax-area placeholder"></div>
+							<div class="doctor-fax phone-number small-8 cell"><input type="text" maxlength="20" value="" id="doctor_fax" name="doctor_fax" placeholder="Fax Number (Optional)" class="doctor-fax fax placeholder"></div>
+						</div>
+						<div class="grid-x">
+							<div class="cell">
+								<button id="SubmitDoctorInfo" name="submit_doctorInfo" class="button" type="submit">Submit Doctor Information</button>
+							</div>
+						</div>
+					</form>
+					<div class="doctor-contact-response" style="display: none;"></div>
+				</div>
+				<div class="rx-submission-upload rx-submission-method" style="display: none;">
+					<div class="upload-instructions">
+						<h3>Upload your prescription:</h3>
+						<p class="upload-note">The document types can be <b>pdf</b>, <b>gif</b>, <b>jpg</b>, <b>png</b>
+							and <b>tif</b> only. The document size must be less than 5MB.</p>
+					</div>
+					<form id="prescriptionUpload" class="rx-upload dropzone" method="post" enctype="multipart/form-data" action="">
+						<div class="fallback">
+							<input type="file" name="file" id="file" class="rx-file-upload" accept="image/*,application/pdf" />
+						</div>
+						<div class="upload-rx-response" style="display: none;"></div>
+					</form>
+				</div>
+			</div>
+
+		</div> <!-- end .main -->
+
+	</div> <!-- end .inner-content -->
+
+</div> <!-- end .content -->
+
+
+<div id="update-shipping-address" class="reveal" data-reveal data-close-on-click>
+	<div class="update-address-head">
+		<button class="close-button" data-close aria-label="Close modal" type="button">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="update-address-form-container">
+		<form class="update-shipping-address-form" data-abide novalidate>
+			<div class="form-fields"></div>
+			<button class="update-address button" type="submit">Ship to this address</button>
+		</form>
+	</div>
+	<div data-abide-error class="update-shipping-address-response alert callout" aria-live="assertive" style="display: none;">
+		<p><i class="fi-alert"></i>Please review the form fields, fix any errors, and submit again.</p>
+		<div class="message"></div>
+	</div>
+</div>
+
+<div id="alternate-shipping-addresses" class="reveal" data-reveal data-close-on-click>
+	<div class="update-address-head">
+		<button class="close-button" data-close aria-label="Close modal" type="button">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<ul class="alternative-addresses"></ul>
+	<button class="add-new-address button" type="button">Add new shipping address</button>
+</div>
+
+<div id="confirm-shipping-address-delete" class="reveal" data-reveal data-close-on-click>
+	<div class="delete-address-head">
+		Are you sure you want to delete this address?
+	</div>
+	<div class="address-preview">
+	</div>
+	<div data-abide-error class="delete-shipping-address-response alert callout" aria-live="assertive" style="display: none;">
+		<div class="message"></div>
+	</div>
+	<button class="confirm delete button" type="button">Delete Address</button>
+	<button class="cancel button" type="button">Cancel</button>
+</div>
+
+<!-- END: PAGE -->

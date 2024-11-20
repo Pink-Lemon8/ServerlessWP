@@ -1,0 +1,269 @@
+/****************************************
+ **** report-widget document 
+****************************************/
+
+table.pw_report {
+	border-bottom: 1px solid #dfdfdf;
+	width: 96%;
+}
+
+table.pw_report td,
+table.pw_report th {
+	border-top: 1px solid #dfdfdf;
+	line-height: 15px;
+}
+
+table.pw_report th {
+	text-align: left;
+	padding: 3px 7px;
+}
+
+table.pw_report td {
+	text-align: left;
+	padding: 3px 4px;
+}
+
+table.pw_report .number,
+table.pw_report .order-total,
+table.pw_report .order-total {
+	text-align: right;
+}
+
+table.pw_report tr.alt td {
+	background-color: #efefef;
+}
+
+div.rpfooter {
+	text-align: right;
+	padding: 10px 20px 10px 0;
+}
+
+table.pw_report td.report-total {
+	font-weight: bold;
+}
+
+table.pw_report td.hold {
+	color: #E66F00;
+}
+
+table.pw_report td.in-progress {
+	color: #178B17;
+}
+
+table.pw_report td.in-progress.paymentcheck {
+	color: #ff0000;
+}
+
+table.pw_report td.in-progress.onhold {
+	color: #E66F00;
+}
+
+table.pw_report td.in-progress.closed {
+	color: #000000;
+}
+
+table.pw_report td.in-progress.abandon {
+	color: #000000;
+	text-decoration: line-through;
+}
+
+.source img {
+	margin: 3px;
+}
+
+/****************************************
+ **** report-details view 
+****************************************/
+.pw-view-order {
+	font-size: 14px;
+	font-family: arial, sans-serif;
+	line-height: 18px;
+	color: #333;
+}
+
+.pw-view-order #view-order-header {
+	background: #2b3439 url(../images/pharmacywire-logo-275x55.png) left center no-repeat;
+	width: 100%;
+	height: 70px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
+.pw-profile-info .recent-orders {
+	float: left;
+	width: 100%;
+}
+
+.pw-view-order #order-info {
+	float: right;
+	width: 30%;
+}
+
+.pw-view-order #billing-info {
+	float: left;
+	width: auto;
+	margin-right: 30px;
+}
+
+.pw-view-order #shipping-info {
+	float: left;
+	width: auto;
+}
+
+.pw-view-order h2 {
+	font-size: 16px;
+	margin-bottom: 0.2em;
+	color: #2b3439;
+}
+
+.pw-view-order #order-info dl {
+	line-height: 18px;
+	margin: 0;
+	white-space: nowrap;
+}
+
+.pw-view-order #order-info dl dt {
+	float: left;
+	clear: both;
+	font-size: 14px;
+	line-height: 18px;
+	margin-right: 3px;
+	white-space: nowrap;
+}
+
+.pw-view-order #order-info dl dd {
+	font-size: 14px;
+	line-height: 18px;
+	white-space: nowrap;
+}
+
+.pw-view-order #order-details {
+	float: left;
+	width: 100%;
+}
+
+.pw-view-order #order-details table {
+	width: 100%;
+	line-height: 21px;
+}
+
+.pw-view-order #order-details table thead th {
+	border-top: none;
+	border-right: none;
+	border-left: none;
+	border-bottom: 1px solid #666;
+	color: #2b3439;
+}
+
+th.description {
+	text-align: left;
+}
+
+th.shipping-fee,
+th.subtotal,
+th.total,
+th.quantity {
+	text-align: right;
+	border: none;
+}
+
+#order-details table {
+	margin: 20px 0 0 0;
+}
+
+#order-details table td {
+	text-align: right;
+}
+
+#order-details table .unit-price,
+#order-details table .subtotal,
+#order-details table .total,
+#order-details table .shipping-fee {
+	text-align: right;
+}
+
+#order-details table td.description,
+#order-details table td.source {
+	text-align: left;
+}
+
+#order-details table td.quantity {
+	text-align: right;
+}
+
+a.pharmacywire-plugin-header {
+	width: 790px;
+	height: 126px;
+	display: block;
+	text-indent: -999em;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	margin-bottom: 1.5rem;
+}
+
+a.pharmacywire-settings {
+	background: url('../images/pharmacywire-settings.png') left center no-repeat, url(../images/pw-heading-background.png) 0 0 repeat-x;
+}
+
+a.pharmacywire-email {
+	background: url('../images/pharmacywire-email.png') left center no-repeat, url(../images/pw-heading-background.png) 0 0 repeat-x;
+}
+
+a.pharmacywire-catalog {
+	background: url('../images/pharmacywire-catalog.png') left center no-repeat, url(../images/pw-heading-background.png) 0 0 repeat-x;
+}
+
+a.pharmacywire-store {
+	background: url('../images/pharmacywire-store.png') left center no-repeat, url(../images/pw-heading-background.png) 0 0 repeat-x;
+}
+
+#wpcontent select#pw_allowed_countries {
+	height: auto;
+}
+
+.description,
+.form-wrap p {
+	color: #333;
+}
+
+/****************************************
+ **** Memcached Stats View 
+****************************************/
+
+.memcached-stats {
+	border: rgba(82, 158, 0, 1) 2px solid;
+	background-color: rgba(82, 158, 0, 0.4);
+	padding: 0rem 1rem;
+	border-radius: 5px;
+	float: left;
+	clear: both;
+}
+.memcached-stats .memcached-server {
+	float: left;
+	margin-right: 2rem;
+}
+.memcached-stats .stats-title {
+	text-transform: uppercase;
+	margin-bottom: 0;
+	color: rgba(48, 93, 0, 1);
+}
+.memcached-stats h3 {
+	font-size: 1rem;
+	margin-bottom: 0.3rem;
+}
+.memcached-stats h3.server {
+	margin: 0.7rem 0 0.2rem 0;
+}
+
+.memcached-stats .message {
+	font-weight: bold;
+	margin: 0.2rem 0 1rem 0;
+}
+.memcached-stats.error {
+	border: rgb(164, 1, 1) 2px solid;
+	background-color: rgba(164, 1, 1, 0.4);
+}
+.memcached-stats.error a,
+.memcached-stats.error .stats-title {
+	color: rgb(94, 3, 3);
+}

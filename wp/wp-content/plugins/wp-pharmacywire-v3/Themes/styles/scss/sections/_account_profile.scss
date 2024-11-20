@@ -1,0 +1,60 @@
+.pw-profile {
+	.profile-info {
+		dl {
+			width: 100%;
+			dt {
+				width: 30%;
+				float: left;
+				clear: both;
+			}
+			dd {
+				width: 60%;
+				float: left;
+			}
+		}
+	}
+
+	#personal-info {
+		.radio-input-container {
+			display: block;
+		}
+	}
+
+	.medicalIngredients {
+		.heading {
+			font-style: bold;
+		}
+	}
+	
+	.available-alternatives {
+		table {
+			thead {
+				th {
+					padding: .5rem .625rem .625rem;
+				}
+			}
+		}
+	}
+
+	// Hiding billing info block as it's no longe implemented in the xml api response
+	.recent-orders {
+		.order-details-view {
+			#billing-info {
+				display: none;
+			}
+		}
+
+		.has-pending-transcription i {
+			color: $info-color;
+		}
+	}
+}
+
+#medical-questionnaire {
+	.note {
+		font-weight: bold;
+	}
+	.medical-questions {
+		min-height: 5rem;
+	}
+}

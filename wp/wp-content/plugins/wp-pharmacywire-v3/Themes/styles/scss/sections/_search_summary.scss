@@ -1,0 +1,12 @@
+.pw-search-summary {
+	.drug_items {
+		.ingredients {
+			&::before {
+				content: '(';
+			}
+			&::after {
+				content: ')';
+			}
+		}
+	}
+}

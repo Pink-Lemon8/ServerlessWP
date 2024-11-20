@@ -1,0 +1,65 @@
+legend h3,
+legend h4 {
+  font-weight: bold;
+  margin-bottom: 0; }
+
+.checkout_form label {
+  font-weight: bold; }
+.checkout_form .question {
+  font-weight: bold; }
+.checkout_form .form-hint {
+  font-size: 80%; }
+.checkout_form .progress {
+  height: 1.2rem; }
+.checkout_form .progress-meter {
+  transition: 0.5s ease; }
+  .checkout_form .progress-meter .progress-meter-text {
+    font-size: 1rem; }
+  .checkout_form .progress-meter fieldset {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #000; }
+.checkout_form .billing_method_select .billing_method {
+  display: none; }
+.checkout_form .billing_method_select .billing_method_label {
+  display: none; }
+.checkout_form .selected-address-container:not(:empty) {
+  min-height: 3rem; }
+.checkout_form .sex-selection-container [type=radio]#sexM {
+  margin-bottom: 0; }
+.checkout_form .billing_method_creditCard .credit-card-icon {
+  font-size: 1.4rem; }
+.checkout_form .billing_method_creditCard .supported-credit-card-icons {
+  margin-bottom: 0.5rem; }
+  .checkout_form .billing_method_creditCard .supported-credit-card-icons .credit-card-icon {
+    padding: 0 0.5rem 0 0; }
+.checkout_form .billing_method_creditCard .credit-card-number {
+  position: relative; }
+  .checkout_form .billing_method_creditCard .credit-card-number .credit-card-icon {
+    position: absolute;
+    top: 6px;
+    right: 0; }
+
+.pw-pharmacy-wrap .coupon-code.pwire-spinner-container {
+  background-position: center right 0.1em;
+  background-size: 1.5em; }
+.pw-pharmacy-wrap .cart-response {
+  margin-bottom: 1rem;
+  min-height: 4rem; }
+  .pw-pharmacy-wrap .cart-response.submitting-order.pwire-spinner-container {
+    background-position: left;
+    padding-left: 4rem;
+    line-height: 4rem;
+    min-height: 4rem; }
+.pw-pharmacy-wrap .rx-submission-method {
+  margin-bottom: 2rem; }
+
+#alternate-shipping-addresses,
+#update-shipping-address {
+  padding: 3.5rem 1rem 1rem 1rem; }
+
+#confirm-shipping-address-delete button.delete {
+  margin-bottom: 0; }
+
+/*# sourceMappingURL=json_checkout.css.map */

@@ -1,0 +1,17 @@
+{
+	"$schema": "https://json.schemastore.org/block.json",
+	"apiVersion": 2,
+	"name": "create-block/pw-account-tools",
+	"version": "0.1.0",
+	"title": "PharmacyWire Account Tools (Block)",
+	"category": "widgets",
+	"icon": "admin-users",
+	"description": "PharmacyWire Account Tools / Menu block for use in sidebars, header, etc.",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "pw-account-tools",
+	"editorScript": "file:./build/index.js",
+	"editorStyle": "file:./build/index.css",
+	"style": "file:./build/style-index.css"
+}

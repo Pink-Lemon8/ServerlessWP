@@ -1,0 +1,53 @@
+$pwire-palette: (gray: #414442,
+	blue: #1f3266,
+	green: #405b2a,
+	red: #5e001c,
+	orange: #815504,
+	violet: #4f3464,
+	pwiregreen: #6bb32c,
+	secondary: #777,
+	success: #34bd66,
+	warning: #de9700,
+	alert: #ffae00,
+	error: #ec5840,
+	info: #4982c7,
+	brand: #698DA9,
+	generic: #C0CC01,
+	rx: #FF3600,
+	otc: #F9AB02,
+) !default;
+
+// Internal variables used for colors
+$primary-color: map-get($pwire-palette, gray);
+$secondary-color: map-get($pwire-palette, secondary);
+$pwire-green: map-get($pwire-palette, pwiregreen);
+$success-color: map-get($pwire-palette, success);
+$warning-color: map-get($pwire-palette, warning);
+$alert-color: map-get($pwire-palette, alert);
+$error-color: map-get($pwire-palette, error);
+$brand-color: map-get($pwire-palette, brand);
+$generic-color: map-get($pwire-palette, generic);
+$rx-color: map-get($pwire-palette, rx);
+$otc-color: map-get($pwire-palette, otc);
+
+// alias
+$delete-color: map-get($pwire-palette, error);
+$remove-color: map-get($pwire-palette, error);
+$info-color: map-get($pwire-palette, info);
+
+$light-gray: #f6f6f6;
+$medium-gray: #dadada;
+$dark-gray: #7a7a7a;
+$black: #333;
+$white: #fefefe;
+$highlight: #ffffcc;
+$body-background: $white;
+$body-font-color: $black;
+$border-color: #cccccc;
+
+.pw-hilight {
+	background-color: rgba(255, 255, 73, 1);
+}
+.pw-transparent {
+	background-color: transparent;
+}

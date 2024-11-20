@@ -1,0 +1,154 @@
+<!-- BEGIN: page -->
+<div class="pw-pharmacy-wrap pwire-checkout pw-checkout-shipping container">
+	<div class="infor-panel shipping">
+		<!-- Start page content here -->
+
+		<!-- BEGIN: SHIPPING_LOGIN -->
+		<div class="shipping-login-panel grid-x">
+			<div class="return-customer large-6 cell">
+				<span class="results-message error">{RESULT_MESSAGES}</span>
+				<h1 id="login-returning-title">Returning Customer?</h1><button class="sign-in button returning-customer">Sign In</button>
+				<form id="frmReturnCustomer" name="frmReturnCustomer" method="post">
+					<input type="hidden" id="action" name="action" value="submit" />
+					<input type="hidden" id="shipping-url" name="shipping-url" value="{SHIPPING_URL}" />
+					{LOGIN_SUCCESS}
+
+					<div class="item login-email">
+						<div class="control">
+							<input type="text" placeholder="Email Address" name="username" class="username" size="20" />
+						</div>
+					</div>
+					<div class="item login-password">
+						<div class="control">
+							<input type="password" placeholder="Password" name="password" id="password" size="20" />
+							<small id="login-response" class="message error">{MESSAGE}</small>
+						</div>
+					</div>
+					<div class="button-container">
+						<input class="bt button" type="submit" id="btnLoginAndProceed" onclick="checkValueLogin(); return false;" value="Sign In" />
+					</div>
+					<a href="{URL_FORGOT_PASSWORD}" class="lnk">Forgot your password?</a>
+				</form>
+			</div>
+			<div class="hr"></div>
+			<!-- End return-customer -->
+		</div>
+		<!-- End shipping-login-panel -->
+		<!-- END: SHIPPING_LOGIN -->
+
+		<!-- BEGIN: SHIPPING_INFO -->
+		<div class="shipping-info-panel container">
+			<form enctype="application/x-www-form-urlencoded" id="frmShippingInfo" name="frmShippingInfo" method="post">
+				<input type="hidden" name="state" id="state" value="shipping" />
+				<input type="hidden" name="action" id="action" />
+				<div class="grid-x">
+					<div class="large-8 cell">
+						<h1 id="login-new-title">New Customer</h1>
+					</div>
+					<div class="note large-4 cell edit-shipping-optional">All fields required unless indicated
+						otherwise.</div>
+				</div>
+				<div class="grid-x">
+					<div class="large-12 cell">
+						<p class="new-customer-info"><input type="button" class="new-customer create-account button" value="Create Account" /></p>
+					</div>
+				</div>
+				<div class="shipping-details container">
+					<div class="shipping-address">
+						<div class="frmShipping">
+							<fieldset>
+								<legend>Contact Info</legend>
+								<div class="name grid-x grid-margin-x">
+									<div class="first-name required large-6 cell">
+										<input type="Text" maxlength="150" size="30" tabindex="10" value="{VALUE_FIRSTNAME}" name="firstName" id="firstName" placeholder="First Name" class="first-name {CLASS_FIRSTNAME}" />
+										{ERROR_FIRSTNAME}
+									</div>
+									<div class="shipping-address-2 optional large-6 cell">
+										<input type="Text" maxlength="150" size="30" tabindex="20" value="{VALUE_LASTNAME}" name="lastName" id="lastName" placeholder="Last Name" class="last-name {CLASS_LASTNAME}" />
+										{ERROR_LASTNAME}
+									</div>
+								</div>
+								<div class="customer-name grid-x grid-margin-x">
+									<div class="phone-home large-6 cell">
+										<div class="grid-x">
+											<div class="phone-home-area auto cell area-code"><input type="Text" maxlength="3" tabindex="30" size="7" value="{VALUE_AREACODEPHONE}" name="phoneAreaCode" placeholder="Area Code" class="phone-home-area {CLASS_AREACODEPHONE}" />
+												{ERROR_AREACODEPHONE}
+											</div>
+											<div class="phone-home phone-number small-8 cell">
+												<input type="Text" maxlength="10" tabindex="40" value="{VALUE_PHONE}" name="phone" placeholder="Phone Number" class="phone-home {CLASS_PHONE}" />
+												{ERROR_PHONE}
+											</div>
+										</div>
+									</div>
+									<div class="fax large-6 cell">
+										<div class="grid-x">
+											<div class="fax-area auto cell area-code"><input type="Text" maxlength="3" tabindex="50" size="7" value="{VALUE_AREACODEFAX}" name="AreaCodeFax" placeholder="Area Code Fax" class="fax-area {CLASS_AREACODEFAX}" /></div>
+											<div class="fax phone-number small-8 cell"><input type="Text" maxlength="10" tabindex="60" value="{VALUE_FAX}" name="Fax" placeholder="Fax Number (Optional)" class="fax {CLASS_FAX}" /></div>
+											{ERROR_FAX}
+										</div>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								<legend>Ship To</legend>
+								<div class="street-address grid-x grid-margin-x">
+									<div class="shipping-address required large-6 cell">
+										<input type="Text" maxlength="250" size="30" tabindex="70" value="{VALUE_ADDRESS1}" name="Address1" id="Address1" placeholder="Street Address" class="shipping-address {CLASS_SHIPPING_ADDRESS1}" />
+										{ERROR_SHIPPING_ADDRESS1}
+									</div>
+									<div class="shipping-address-2 optional large-6 cell">
+										<input type="Text" maxlength="250" size="30" tabindex="80" value="{VALUE_ADDRESS2}" name="Address2" id="Address2" placeholder="Apt, Suite, Bldg. (Optional)" class="shipping-address-2 {CLASS_SHIPPING_ADDRESS2}" />
+										{ERROR_SHIPPING_ADDRESS2}
+									</div>
+								</div>
+
+								<div class="grid-x grid-margin-x">
+									<div class="large-6 cell">
+										<div class="grid-x grid-margin-x">
+											<div class="city required large-6 cell">
+												<input type="Text" maxlength="250" tabindex="90" value="{VALUE_CITY}" name="City" id="City" placeholder="City" class="shipping-city {CLASS_SHIPPING_CITY}" />
+												{ERROR_SHIPPING_CITY}
+											</div>
+											<div class="country large-6 cell">
+												{SELECT_SHIPPING_COUNTRY}
+												{ERROR_SHIPPING_COUNTRY}
+											</div>
+										</div>
+									</div>
+									<div class="large-6 cell">
+										<div class="grid-x grid-margin-x">
+											<div class="state province large-7 cell">
+												{SELECT_SHIPPING_PROVINCE}
+												{ERROR_SHIPPING_PROVINCE}
+											</div>
+											<div class="required header large-5 cell">
+												<input id="PostalCode" type="Text" maxlength="250" tabindex="120" value="{VALUE_POSTALCODE}" name="PostalCode" placeholder="Postal Code" class="postal-code zip-code shipping-postal-code shipping-zip-code {CLASS_SHIPPING_POSTALCODE}" />
+												{ERROR_SHIPPING_POSTALCODE}
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="customer-name grid-x grid-margin-x">
+									<div class="phone-home large-6 cell">
+										<div class="grid-x">
+											<div class="phone-day-area auto cell area-code"><input type="Text" maxlength="3" tabindex="130" size="7" value="{VALUE_SHIPPING_AREACODE}" name="shipping_phoneAreaCode" placeholder="Area Code" class="areacode-phone-shipping {CLASS_SHIPPING_AREACODE}" /></div>
+											<div class="phone-day phone-number small-8 cell"><input type="Text" maxlength="10" tabindex="140" value="{VALUE_SHIPPING_PHONE}" name="shipping_phone" placeholder="Alternate Phone Number (Optional)" class="phone-shipping {CLASS_SHIPPING_PHONE}" /></div>
+											{ERROR_SHIPPING_PHONE}
+										</div>
+									</div>
+								</div>
+							</fieldset>
+							<div>
+								<input class="bt button" type="button" tabindex="150" id="btnProceedToBill" value="{NEXT_BUTTON_VALUE}" onclick="return checkActionSave('save');" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<!-- END: SHIPPING_INFO -->
+
+		<!-- End page content here -->
+	</div>
+</div>
+<!-- END: page -->

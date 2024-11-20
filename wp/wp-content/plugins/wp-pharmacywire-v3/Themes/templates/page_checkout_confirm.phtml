@@ -1,0 +1,293 @@
+<!-- BEGIN: page -->
+<div class="pw-pharmacy-wrap pwire-checkout pw-checkout-confirm container">
+
+	<div class="infor-panel confirm">
+		<!-- Start page content here -->
+
+		<h1>Review Order</h1>
+		<form method="post" id="frmCheckout" name="frmCheckout">
+			<input type="hidden" name="action" id="action" />
+			{RESULT_MESSAGES}
+			<div class="grid-x grid-margin-x collapse" data-equalizer data-equalise-on="medium">
+				<div id="shipping-information-container" class="small-12 large-6 cell">
+					<fieldset id="shipping-information" data-equalizer-watch>
+						<legend>Shipping&nbsp;<a class="edit edit-shipping" href="{EDIT_SHIPPING_URL}">Change</a>
+						</legend>
+						<div id="shipping-address" class="grid-x grid-margin-x">
+							<div class="medium-6 large-6 cell">
+								<h3 class="section">Customer</h3>
+								<div class="content">
+									<div class="shipping-name">{SHIPPING_FULL_NAME}</div>
+									<div><span class="account-areacode">{ACCOUNT_AREACODEPHONE}</span> <span class="account-phone">{ACCOUNT_PHONE}</span></div>
+									<div><span class="shipping-areacodefax">{SHIPPING_AREACODEFAX}</span> <span class="shipping-fax">{SHIPPING_FAX}</span></div>
+								</div>
+							</div>
+							<div class="medium-6 large-6 cell">
+								<h3 class="section">Address</h3>
+								<div class="content">
+									<div class="shipping-address street">{SHIPPING_ADDRESS}</div>
+									<div><span class="shipping-city city">{SHIPPING_CITY}</span>, <span class="shipping-province province">{SHIPPING_PROVINCE}</span> <span class="shipping-country country">{SHIPPING_COUNTRY}</span></div>
+									<div class="shipping-postalcode">{SHIPPING_POSTALCODE}</div>
+									<div><span class="shipping-areacode">{SHIPPING_AREACODE}</span> <span class="shipping-phone">{SHIPPING_PHONE}</span></div>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+				</div>
+				<!-- BEGIN: BILLING -->
+				<div id="billing-information-container" class="small-12 large-6 cell">
+					<fieldset id="billing-information" data-equalizer-watch>
+						<legend>Billing&nbsp;<a class="edit edit-billing" href="{EDIT_BILLING_URL}">Change</a></legend>
+						<div class="grid-x grid-margin-x">
+							<div id="billing-address" class="medium-5 large-5 cell">
+								<div class="billing">
+									<h3 class="section">Address</h3>
+									<div class="content">
+										<div class="billing-address street">{BILLING_ADDRESS}</div>
+										<div><span class="billing-city city">{BILLING_CITY}</span>, <span class="billing-province province">{BILLING_PROVINCE}</span> <span class="billing-country country">{BILLING_COUNTRY}</span></div>
+										<div class="billing-postalcode">{BILLING_POSTALCODE}</div>
+										<div><span class="billing-areacode">{BILLING_AREACODE}</span> <span class="billing-phone">{BILLING_PHONE}</span></div>
+									</div>
+								</div>
+							</div>
+							<!-- BEGIN: METHOD -->
+							<div id="payment-information" class="medium-7 large-7 cell">
+								<h3 class="section">{PAYMENT_METHOD} Information</h3>
+								<!-- BEGIN: DRAFT -->
+								<div class="confirm-draft">
+									<div class="title"><span>Please mail a</span><span class="bold">&nbsp;check, draft,
+											or money order&nbsp;</span><span>to:</span> </div>
+									<div class="content">
+										<strong>{PW_NAME}</strong><br />
+										<span>{PW_ADDRESS}</span><br />
+											<span>{PW_CITY}, {PW_PROVINCE} {PW_COUNTRY}</span><br />
+											<span>{PW_POSTAL_CODE}</span>
+									</div>
+								</div>
+								<!-- END: DRAFT -->
+								<!-- BEGIN: EFT -->
+								<div class="confirm-eft">
+									<div class="content">
+										<div class="item grid-x grid-margin-x">
+											<div class="heading bold large-6 cell">Name</div>
+											<div class="value large-6 cell">{NameOnCheque}</div>
+										</div>
+										<div class="item grid-x grid-margin-x">
+											<div class="heading bold large-6 cell">Bank</div>
+											<div class="value large-6 cell">{BankName}</div>
+										</div>
+										<div class="item grid-x grid-margin-x">
+											<div class="heading bold large-6 cell">&nbsp;</div>
+											<div class="value large-6 cell">{BankCity}, {BankState}</div>
+										</div>
+										<div class="item grid-x grid-margin-x">
+											<div class="heading bold large-6 cell">Transit Number</div>
+											<div class="value large-6 cell">{BranchTransit}</div>
+										</div>
+										<div class="item grid-x grid-margin-x">
+											<div class="heading bold large-6 cell">Account Number</div>
+											<div class="value large-6 cell">{ChequeAccount}</div>
+										</div>
+										<div class="item grid-x grid-margin-x">
+											<div class="heading bold large-6 cell">Cheque Number</div>
+											<div class="value large-6 cell">{ChequeNumber}</div>
+										</div>
+									</div>
+								</div>
+								<!-- END: EFT -->
+								<!-- BEGIN: CREDIT_CARD -->
+								<div class="confirm-credit-card">
+									<div class="content">
+										<div class="item grid-x grid-margin-x">
+											<div class="heading bold large-6 cell">Name</div>
+											<div class="value large-6 cell">{Name}</div>
+										</div>
+										<div class="item grid-x grid-margin-x">
+											<div class="heading bold large-6 cell">Card Type</div>
+											<div class="value large-6 cell">{CreditCartType}</div>
+										</div>
+										<div class="item grid-x grid-margin-x">
+											<div class="heading bold large-6 cell">Card Number</div>
+											<div class="value large-6 cell">{CreditCardNumber}</div>
+										</div>
+										<div class="item grid-x grid-margin-x">
+											<div class="heading bold large-6 cell">CVV2 Number</div>
+											<div class="value large-6 cell">***</div>
+										</div>
+										<div class="item grid-x grid-margin-x">
+											<div class="heading bold large-6 cell">Expiration Date</div>
+											<div class="value large-6 cell">
+												<span>{ExpiryMonth}</span>
+												<span>/</span>
+												<span>{ExpiryYear}</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- END: CREDIT_CARD -->
+							</div>
+							<!-- END: METHOD -->
+						</div>
+					</fieldset>
+				</div>
+				<!-- END: BILLING -->
+			</div>
+			<fieldset id="order-information">
+				<legend>Order Information <a class="edit edit-cart" href="{EDIT_CART_URL}">Change</a></legend>
+
+				<table border="0" cellpadding="0" cellspacing="0" class="tbcheckout">
+					<thead>
+						<tr>
+							<th class="drug-icons"></th>
+							<th class="description">Description</th>
+							<th class="quantity">Quantity</th>
+							<th class="unit">Unit</th>
+							<th class="subtotal">Total</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- BEGIN: ITEM -->
+						<tr>
+							<td class="drug-icons">{ITEM_brandOrGeneric}{ITEM_rxRequired}{ITEM_countryFlag}</td>
+							<td class="description">{ITEM_name} - {ITEM_strength} {ITEM_quantity}</td>
+							<td class="quantity">{ITEM_qty}<input type="hidden" id="qty[{ITEM_packageId}]" name="qty[{ITEM_packageId}]" class="qty" value="{ITEM_qty}" maxlength="5" /></td>
+							<td class="unit"><span class="dollar-sign">\$</span>{ITEM_price}</td>
+							<td class="subtotal"><span class="dollar-sign">\$</span>{ITEM_sub_total}</td>
+						</tr>
+						<!-- END: ITEM -->
+						<!-- BEGIN: TOTAL -->
+					</tbody>
+					<tfoot>
+						<tr class="cart-subtotal">
+							<td colspan="3"></td>
+							<td class="heading">SubTotal</td>
+							<td class="value"> <span class="dollar-sign">\$</span>{SUB_TOTAL}</td>
+						</tr>
+						<!-- BEGIN: COUPON_LINEITEM -->
+						<tr class="coupons-line-item {COUPON_LINEITEM_CLASS}" data-coupon-code="{COUPON_CODE}" data-coupon-nonce="{COUPON_NONCE}" {COUPON_LINEITEM_STYLE}>
+							<td colspan="2" class="coupon-description">{COUPON_LINE_DESCRIPTION} {REMOVE_COUPON}</td>
+							<td colspan="2" class="heading coupon-label">{COUPON_LABEL} {COUPON_DISCOUNT_METHOD_HUMAN}
+							</td>
+							<td class="value coupon-discount">{COUPON_DISCOUNT}</td>
+						</tr>
+						<!-- END: COUPON_LINEITEM -->
+						<tr class="cart-shipping-fee shipping-fee" data-undiscounted-shipping="{DATA_UNDISCOUNTED_SHIPPING}">
+							<td colspan="3"></td>
+							<td class="heading">Shipping</td>
+							<td class="value">{SHIPPING_FEE}</td>
+						</tr>
+						<tr class="grand-total" data-undiscounted-total="{DATA_UNDISCOUNTED_TOTAL}">
+							<td colspan="3"></td>
+							<td class="heading">Total<span class="currency">&nbsp;(USD)</span></td>
+							<td class="value"> <span class="dollar-sign">\$</span>{TOTAL}</td>
+						</tr>
+					</tfoot>
+					<!-- END: TOTAL -->
+				</table>
+			</fieldset>
+			<div class="user-signup">
+				<!-- BEGIN:USER_INFO -->
+				<div class="user-info">
+					<fieldset>
+						<!-- BEGIN:LOGIN_INFO -->
+						<legend>Login Information</legend>
+						<div class="item grid-x grid-margin-x">
+							<div class="small-12 large-12 cell">
+								<label class="right inline">Email</label>
+								<input type="text" maxlength="50" class="username" name="username" placeholder="Email Address" value="{USER_NAME}" />{ERROR_USERNAME}
+							</div>
+							<div class="small-12 large-12 cell">
+								<label class="right inline">Password</label>
+								<input type="password" maxlength="20" id="password" name="password" value="{PASSWORD}" class="password" onfocus="this.value = '';" />
+								<div class="large-6 cell">{ERROR_PASSWORD}</div>
+								<div class="default-password">
+									Your default password is: <span class="gen-password">{GEN_PASSWORD}</span>
+								</div>
+								<!-- BEGIN: PASSWORD_WARNING -->
+								<div>
+									<span class="note">If you'd like to change your password please enter a new
+										password<br /> into the Password field above.</span>
+								</div>
+								<!-- END:PASSWORD_WARNING -->
+							</div>
+						</div>
+						<!-- END: LOGIN_INFO -->
+					</fieldset>
+					<fieldset>
+						<legend>Personal Information {PRESCRIPTION_REQUIRED_MSG}</legend>
+						<!-- BEGIN:PRESCRIPTION_REQUIRED -->
+						<div class="item grid-x grid-margin-x">
+							<div class="value large-12 cell"><span class="note personal-info-note">Your weight and sex
+									are required information for filling prescriptions.</span></div>
+						</div>
+						<div class="item grid-x grid-margin-x">
+							<div class="height-info small-12 medium-4 cell">
+								<div class="grid-x grid-margin-x">
+									<div class="required heading large-12 cell">
+										<label class="inline">Height</label>
+									</div>
+									<div class="small-6 cell">
+										{SELECT_HEIGHTFEET}
+									</div>
+									<div class="small-6 cell">
+										{SELECT_HEIGHTINCHES}
+									</div>
+									{ERROR_HEIGHT}
+								</div>
+							</div>
+							<div class="weight-info small-12 medium-4 cell">
+								<div class="required heading large-2 cell">
+									<label class="inline">Weight</label>
+								</div>
+								<div class="large-3 cell"><input type="Text" maxlength="15" size="5" value="{VALUE_WEIGHT}" name="Weight" placeholder="(lbs)" class="two">
+									{ERROR_WEIGHT}
+								</div>
+							</div>
+							<div class="small-12 medium-4 cell">
+								<label class="inline">Sex</label>
+								{SELECT_SEX}
+								{ERROR_SEX}
+							</div>
+						</div>
+						<!-- END:PRESCRIPTION_REQUIRED -->
+						<!-- BEGIN:BIRTHDATE_REQUIRED -->
+						<div class="item">
+							<div class="birthdate grid-x grid-margin-x">
+								<div class="birth-month large-5 cell">
+									<label>Birth Date</label>
+									{SELECT_BIRTHDATE_MONTH}
+								</div>
+								<div class="birth-day large-3 cell">
+									<label>&nbsp;</label>
+									<input type="TEXT" maxlength="2" size="2" placeholder="dd" value="{VALUE_BIRTHDATE_DAY}" name="BirthDate_DAY">
+								</div>
+								<div class="birth-year large-4 cell">
+									<label>&nbsp;</label>
+									<input type="TEXT" maxlength="4" size="4" placeholder="yyyy" value="{VALUE_BIRTHDATE_YEAR}" name="BirthDate_YEAR">
+								</div>
+								{ERROR_BIRTHDATE}
+							</div>
+						</div>
+						<!-- END:BIRTHDATE_REQUIRED -->
+					</fieldset>
+				</div>
+				<!-- END:USER_INFO -->
+				<div class="grid-x grid-margin-x">
+					<div class="agree small-12 cell">
+						<input id="agree" name="agree" value="true" type="checkbox" {VALUE_AGREEMENT}><label class="agree" for="agree">I have read and agree to the <a href="/terms-of-use" target="winout">Terms of Use</a> and <a href="/privacy-policy" target="winout">Privacy
+								Policy.</a> </label>
+						<div class="item grid-x grid-margin-x">{ERROR_AGREEMENT}</div>
+					</div>
+				</div>
+				<div class="grid-x grid-margin-x">
+					<div class="small-12 cell">
+						<input type="button" class="button" name="SubmitOrder" id="SubmitOrder" value="Confirm Order" onclick="submitOrder(this)" />
+					</div>
+				</div>
+			</div>
+		</form>
+
+		<!-- End page content here -->
+	</div>
+</div>
+<!-- END: page -->

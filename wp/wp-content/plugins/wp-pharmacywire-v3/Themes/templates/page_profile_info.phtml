@@ -1,0 +1,500 @@
+<!-- BEGIN: page -->
+<div class="pw-pharmacy-wrap pw-profile container">
+	<div class="row grid-x grid-margin-x">
+		<div class="large-12 small-12 cell account-links"><a href="{URL_PROFILE_CHANGE_PASS}">Change Password</a></div>
+	</div>
+
+	<div class="section-container">
+		<ul class="tabs" data-tabs id="profile-tabs" data-deep-link="true" data-update-history="true" data-deep-link-smudge="true" data-deep-link-smudge-delay="500">
+			<li class="tabs-title is-active">
+				<a href="#recent-orders" class="recentOrdersTab" area-selected="true">Recent Orders</a>
+			</li>
+			<li class="tabs-title">
+				<a href="#profile" class="profileTab">Profile</a>
+			</li>
+			<li class="tabs-title">
+				<a href="#address" class="accountAddressTab">Address</a>
+			</li>
+			<li class="tabs-title">
+				<a href="#document-upload" class="documentUploadTab">Document Upload</a>
+			</li>
+			<li class="tabs-title">
+				<a href="#medical-questionnaire" class="medicalQuestionnaireTab">Medical Questionnaire</a>
+			</li>
+		</ul>
+	</div>
+
+	<div class="tabs-content" data-tabs-content="profile-tabs">
+		<div class="tabs-panel is-active" id="recent-orders">
+			<div class="content" data-slug="recentOrders" data-section-content>
+				<script id="recent-orders-tmpl" type="text/x-dot-template">
+					<tbody id="recent-order-{{=it.id}}">
+						<tr class="recent-order-summary" order-id="{{=it.id}}">
+							<td class="order-id view-recent-order"><a href="/view-order/?orderid={{=it.id}}" order-id="{{=it.id}}">{{=it.id}}</a></td>
+							<td class="order-created">{{=it.created}}</td>
+							<td class="order-status">{{=it.visualstatus}} {{? it.contains_prescriptions && it.has_pending_transcription}}{PENDING_TRANSCRIPTION}{{?}}</td>
+							<td class="order-tracking">{{=it.trackingid || 'Unavailable'}}</td>
+						</tr>
+						<tr id="order-details-view-{{=it.id}}" class="order-details-view">
+							<td colspan="4"><div class="order-container" style="display: none;"></div></td>
+						</tr>
+					</tbody>
+				</script>
+				<script id="recent-order-line-items-tmpl" type="text/x-dot-template">
+					<tr>
+						<td class="description">{{=it.description}}</td>
+						<td class="quantity">{{=it.quantity}}</td>
+						<td class="unit-price">\${{=it.unitprice}}</td>
+					</tr>
+				</script>
+				<script id="recent-order-tmpl" type="text/x-dot-template">
+					<div id="order-detail-{{=it.id}}" class="pw-view-order container">
+					
+						<div id="order-info" style="display: none;">
+							<h2>Order Info:</h2>
+							<dl>
+								<dt>Order Id:</dt><dd>{{=it.id}}</dd>
+								<dt>Status:</dt><dd>{{=it.visualstatus}}</dd>
+								<dt>Date:</dt><dd>{{=it._date}}</dd>
+								<dt>Tracking Id:</dt><dd>{{=it.trackingid || 'Unavailable'}}</dd>
+							<dl>
+						</div>
+
+						<div class="grid-x">
+							<div id="billing-info" class="cell medium-6">
+								<h3>Billed To:</h3>
+								{{=it.billing.firstname}} {{=it.billing.lastname}}<br />
+								{{=it.billing.address}}<br />
+								{{=it.billing.city}}, {{=it.billing.state}} {{=it.billing.postalcode}}<br />
+								{{=it.billing.country}}<br />
+							</div>
+		
+							<div id="shipping-info" class="cell medium-6">
+								<h3>Shipped To:</h3>
+								{{=it.shipping.firstname}} {{=it.shipping.lastname}}<br />
+								{{=it.shipping.address}}<br />
+								{{=it.shipping.city}}, {{=it.shipping.state}} {{=it.shipping.postalcode}}<br />
+								{{=it.shipping.country}}<br />
+							</div>
+						</div>
+
+						<div id="order-details">
+							<table cellpadding="0" cellspacing="0" border="0">
+								<thead>
+									<tr>
+										<th class="description">Description</th>
+										<th class="quantity">Quantity</th>
+										<th class="unit-price">Unit Price</th>
+									</tr>
+								</thead>
+								<tbody id="order-line-items-{{=it.id}}">&nbsp;
+								</tbody>
+								<tfoot>	
+									<tr>
+										<th class="subtotal" colspan="2">Subtotal</th>
+										<td>\${{=it.subtotal}}</td>
+									</tr>
+									<tr>
+										<th class="shipping-fee" colspan="2">Shipping Fee</th>
+										<td>\${{=it.shippingcost}}</td>
+									</tr>
+									<tr>
+										<td><div class="view-pdf">{INVOICE_PDF}</div></td>
+										<th class="total">Total</th>
+										<td>\${{=it.grandtotal}}</td>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+				</script>
+				<div class="recent-orders">
+					<div class="row grid-x grid-margin-x">
+						<div class="large-12 cell">
+							<a class="reorder re-order right button" href="{REORDER_URL}">Re-Order Products</a>
+						</div>
+					</div>
+					<table id="recent-orders-list" class="tableRecentOrder">
+						<thead>
+							<th class="order-id">ID #</th>
+							<th class="order-created date">Date</th>
+							<th class="order-status">Status</th>
+							<th class="order-tracking">Tracking #</th>
+						</thead>
+						<!-- BEGIN: recentOrder -->
+						{ORDER_HTML}
+						<!-- END: recentOrder -->
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<div class="tabs-panel" id="profile">
+			<div class="content" data-slug="profile" data-section-content>
+				<script id="profile-info-tmpl" type="text/x-dot-template">
+					<div class="profile-info row grid-x grid-margin-x">
+					    <dl class="cell">
+							<dt class="name">Your Name</dt>
+							    <dd>{{=it.firstname}} {{=it.lastname}}</dd>
+							<dt class="email">Email</dt>
+							    <dd><a href="mailto:{{=it.email}}">{{=it.email}}</a></dd>
+							<dt class="user-name">User Name</dt>
+							    <dd>{{=it.username}}</dd>
+							<dt class="address">Address</dt>
+							    <dd>{{=it.address.address1}}<br />
+								    {{? it.address.address2}}{{=it.address.address2}}<br />{{?}}
+								    {{? it.address.address3}}{{=it.address.address3}}<br />{{?}}
+								    {{=it.address.city}}, {{=it.address.province}} {{=it.address.postalcode}}<br />
+								    {{=it.address.country}}
+							    </dd>
+							<dt class="phone">Phone</dt>
+							    <dd>({{=it.areacode}}) {{=it.phone}}</dd>
+							<dt class="phone">Alternate Phone</dt>
+								{{? it.phone_day}}
+							    <dd>({{=it.areacode_day}}) {{=it.phone_day}}</dd>
+								{{?}}
+							<dt class="fax">Fax</dt>
+							    <dd>{{? it.areacode_fax}}({{=it.areacode_fax}}){{?}} {{=it.fax || 'n/a'}}</dd>
+							{{? it.child_resistant_packaging != ''}}
+							<dt class="packing-note">Child Resistant Packaging?</dt>
+							    <dd>{{=it.child_resistant_packaging}}</dd>
+							{{?}}
+							{{? it.call_for_refills != ''}}
+						    <dt class="packing-note">Call/Email for Refills?</dt>
+							    <dd>{{=it.call_for_refills}}</dd>
+							{{?}}
+							<dt class="birth-date">Birth date</dt>
+							    <dd>{{=it.dateofbirth_long}}</dd>
+							<dt class="sex">Sex</dt>
+							    <dd>{{=it.sex}}</dd>
+							<dt class="wieght">Weight</dt>
+							    <dd>{{? it.weight.value}}{{=it.weight.value}} {{=it.weight.unit}}{{?}}</dd>
+							<dt class="height">Height</dt>
+							    <dd>{{? it.height.feet}}{{=it.height.feet}}'{{?}}{{? it.height.inches}}{{=it.height.inches}}"{{?}}</dd>
+					    </dl>
+					</div>
+					<div class="row grid-x grid-margin-x">
+						<div class="cell"><button class="edit-profile button" type="button">Edit Profile</button></div>
+					</div>
+				</script>
+				<div id="profile-info">
+					<div class="profile-info row grid-x grid-margin-x">
+						<dl class="twelve cell">
+							<dt class="name">Your Name</dt>
+							<dd>{VALUE_FULLNAME}</dd>
+							<dt class="email">Email</dt>
+							<dd><a href="mailto:{VALUE_EMAIL}">{VALUE_EMAIL}</a></dd>
+							<dt class="user-name">User Name</dt>
+							<dd>{VALUE_USERNAME}</dd>
+							<dt class="address">Address</dt>
+							<dd>{VALUE_FULL_ADDRESS}</dd>
+							<dt class="phone">Phone</dt>
+							<dd>({VALUE_AREACODEPHONE}) {VALUE_PHONE}</dd>
+							<dt class="phone">Alternate Phone</dt>
+							<dd>
+								<!-- BEGIN: phoneDay -->
+								({VALUE_AREACODEPHONE_DAY}) {VALUE_PHONE_DAY}
+								<!-- END: phoneDay -->
+							</dd>
+							<dt class="fax">Fax</dt>
+							<dd>{VALUE_AREACODEFAX} {VALUE_FAX}</dd>
+							<!-- BEGIN: childResistantPackaging -->
+							<dt class="child-resistant-packaging">Child Resistant Packaging?</dt>
+							<dd>{VALUE_CHILDRESISTANTPKG}</dd>
+							<!-- END: childResistantPackaging -->
+							<!-- BEGIN: callForRefills -->
+							<dt class="call-for-refills">Call/Email for Refills?</dt>
+							<dd>{VALUE_CALLFORREFILLS}</dd>
+							<!-- END: callForRefills -->
+							<dt class="birth-date">Birth date</dt>
+							<dd>{VALUE_BIRTHDATE}</dd>
+							<dt class="sex">Sex</dt>
+							<dd>{VALUE_SEX}</dd>
+							<dt class="wieght">Weight</dt>
+							<dd>{VALUE_WEIGHT} {VALUE_WEIGHT_UNIT}</dd>
+							<dt class="height">Height</dt>
+							<dd>{VALUE_HEIGHT}</dd>
+						</dl>
+					</div>
+					<div class="row grid-x grid-margin-x">
+						<div class="cell"><button class="edit-profile button" type="button">Edit Profile</button></div>
+					</div>
+				</div>
+				<div id="page-register-form" style="display: none;">
+					<span class="error">{RESULT_MESSAGES}</span>
+					<form id="profile-form" enctype="application/x-www-form-urlencoded" method="POST" action="" name="Sign_Up_Edit">
+						<input type="hidden" value="1" name="submitted">
+
+						<fieldset id="contact-info">
+							<legend>Contact Info</legend>
+							<div class="customer-phone row grid-x grid-margin-x">
+								<div class="phone-home large-6 cell">
+									<label>Phone Number
+										<div class="grid-x grid-margin-x">
+											<div class="phone-home-area small-4 cell area-code"><input type="Text" maxlength="3" size="7" value="{VALUE_EDIT_AREACODEPHONE}" name="phoneAreaCode" placeholder="Area Code" class="phone-home-area {CLASS_AREACODEPHONE}" />
+											</div>
+											<div class="phone-home small-8 cell phone-number">
+												<input type="Text" maxlength="20" value="{VALUE_EDIT_PHONE}" name="phone" placeholder="Phone Number" class="phone-home {CLASS_PHONE}" />
+												{ERROR_PHONE}
+											</div>
+										</div>
+									</label>
+								</div>
+								<div class="phone-day large-6 cell">
+									<label>Alternate Phone Number
+										<div class="grid-x grid-margin-x">
+											<div class="phone-day-area small-4 cell area-code"><input type="Text" maxlength="3" size="7" value="{VALUE_EDIT_AREACODEPHONE_DAY}" name="phoneAreaCodeDay" placeholder="Area Code" class="phone-day-area optional {CLASS_AREACODEPHONE_DAY}" />
+											</div>
+											<div class="phone-day small-8 cell phone-number">
+												<input type="Text" maxlength="10" value="{VALUE_EDIT_PHONE_DAY}" name="phoneDay" placeholder="Phone Number" class="phone-day optional {CLASS_PHONE_DAY}" />
+												{ERROR_PHONE_DAY}
+											</div>
+										</div>
+									</label>
+								</div>
+								<div class="fax large-6 cell">
+									<label>Fax Number
+										<div class="grid-x grid-margin-x">
+											<div class="fax-area small-4 cell area-code"><input type="Text" maxlength="3" size="7" value="{VALUE_EDIT_AREACODEFAX}" name="AreaCodeFax" placeholder="Area Code" class="fax-area {CLASS_AREACODEFAX} optional" />
+											</div>
+											<div class="fax small-8 cell phone-number">
+												<input type="Text" maxlength="10" value="{VALUE_EDIT_FAX}" name="Fax" placeholder="Fax Number (Optional)" class="fax {CLASS_FAX} optional" />
+												{ERROR_FAX}
+											</div>
+										</div>
+									</label>
+								</div>
+							</div>
+							<div class="email row grid-x grid-margin-x">
+								<div class="item large-6 cell">
+									<label>Email
+										<input class="username" name="Username" type="text" maxlength="50" placeholder="Email Address" value="{VALUE_EDIT_USERNAME}" class="username {CLASS_USERNAME}" />
+										{ERROR_USERNAME}
+									</label>
+								</div>
+								<div class="item large-6 cell">
+									<label>Confirm Email
+										<input class="confirm-username" name="ConfirmUsername" type="text" maxlength="50" placeholder="Confirm Email Address" value="{VALUE_EDIT_CONFIRM_USERNAME}" class="confirm-username {CLASS_CONFIRM_USERNAME}" />
+										{ERROR_CONFIRM_USERNAME}
+									</label>
+								</div>
+							</div>
+						</fieldset>
+
+						<fieldset id="personal-info">
+							<legend>Personal Information<span class="foot-note">*</span> {PRESCRIPTION_REQUIRED_MSG}
+							</legend>
+							<div class="item row grid-x grid-margin-x">
+								<div class="large-6 cell">
+									<div class="birthdate">
+										<div class="row grid-x grid-margin-x">
+											<label class="large-12 cell">Birth Date</label>
+											<div class="large-5 cell">{SELECT_EDIT_BIRTHDATE_MONTH}</div>
+											<div class="large-3 cell"><input type="TEXT" maxlength="2" size="2" placeholder="dd" value="{VALUE_EDIT_BIRTHDATE_DAY}" name="BirthDate_DAY" class="birthdate-day {CLASS_BIRTHDATE_DAY}">
+											</div>
+											<div class="large-4 cell"><input type="TEXT" maxlength="4" size="4" placeholder="yyyy" value="{VALUE_EDIT_BIRTHDATE_YEAR}" name="BirthDate_YEAR" class="birthdate-year {CLASS_BIRTHDATE_YEAR}"></div>
+										</div>
+										{ERROR_BIRTHDATE}
+									</div>
+								</div>
+								<div class="sex-info large-4 cell end">
+									<div class="row grid-x grid-margin-x">
+										<div class="large-12 cell">
+											<label>Sex</label>
+											{SELECT_EDIT_SEX}
+											{ERROR_SEX}
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="item row grid-x grid-margin-x">
+								<div class="height-info large-6 cell">
+									<div class="row grid-x grid-margin-x">
+										<label class="large-12 cell">Height (Feet/Inches)</label>
+										<div class="large-6 cell">
+											{SELECT_EDIT_HEIGHTFEET}
+										</div>
+										<div class="large-4 cell end expand">
+											{SELECT_EDIT_HEIGHTINCHES}
+										</div>
+										{ERROR_HEIGHT}
+									</div>
+								</div>
+								<div class="weight-info large-3 cell end">
+									<div class="row grid-x grid-margin-x">
+										<div class="large-12 cell">
+											<label>Weight ({VALUE_WEIGHT_UNIT})</label>
+											<input class="weight {CLASS_WEIGHT}" type="Text" maxlength="15" size="5" value="{VALUE_WEIGHT}" name="Weight" placeholder="({VALUE_WEIGHT_UNIT})" />
+											{ERROR_WEIGHT}
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- BEGIN: childResistantPackagingInput -->
+							<div class="item row grid-x grid-margin-x">
+								<div class="large-12 cell">
+									<label>Child Resistant Packaging</label>
+									{SELECT_EDIT_CHILDRESISTANTPKG}
+									{ERROR_CHILDRESISTANTPKG}
+								</div>
+							</div>
+							<!-- END: childResistantPackagingInput -->
+							<!-- BEGIN: callForRefillsInput -->
+							<div class="item row grid-x grid-margin-x">
+								<div class="large-12 cell">
+									<label>Call/Email for Refills</label>
+									{SELECT_EDIT_REFILLNOTIFICATION}
+									{ERROR_REFILLNOTIFICATION}
+								</div>
+							</div>
+							<!-- END: callForRefillsInput -->
+							<div class="item row grid-x grid-margin-x">
+								<div class="large-12 cell">
+									<div class="note"><span class="foot-note">*</span>Personal information is required
+										for filling
+										prescriptions.</div>
+								</div>
+							</div>
+						</fieldset>
+
+						<div>
+							<button id="update-profile" class="button" type="button">Update</button>
+							<button id="cancel-profile" class="button" type="button">Cancel</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div class="tabs-panel" id="address">
+			<div class="content" data-slug="accountAddress" data-section-content>
+				<script id="address-list-tmpl" type="text/x-dot-template">
+					<li id="shipping-row grid-x grid-margin-x-{{=it.id}}" class="address-line row grid-x grid-margin-x pw-transparent" shipping-value="{{=it.id}}"><label class="address-line large-7 cell"><span id="address-id-{{=it.id}}"><span class="description">{{=it.description}}</span>: <span class="address1">{{=it.address1}}</span>, {{? it.address2}}<span class="address2">{{=it.address2}}</span>, {{?}}<span class="city">{{=it.city}}</span>, <span class="province">{{=it.province}}</span>, <span class="country">{{=it.country}}</span>, <span class="postalcode">{{=it.postalcode}}</span> {{? it.areacode}}<span class="areacode">{{=it.areacode}}</span>{{?}} {{? it.phone}}<span class="phone">{{=it.phone}}</span>{{?}}</span></label> <span class="controls large-3 cell">{{=it.controls}}</span></label></li>
+				</script>
+				<div id="address-manager">
+					<div id="shipping-container" class="container">
+
+						<h2>Address Management</h2>
+						<div id="select-shipping-container">
+							<form name="frmSelectShipping" id="frmSelectShipping" method="post">
+								<input type="hidden" name="action" id="action" />
+								<input type="hidden" name="shipping-address-id" id="shipping-address-id" />
+								<input type="hidden" id="display-ship-to-button-remove" name="display-ship-to-button-remove" value="{EDIT_DISPLAY_SHIP_TO_BUTTON}" />
+								<div class="checkout-edit-address">
+									<div>
+										<ul id="select-shipping-address" class="select-shipping-address">
+											{ADDRESS_LIST}
+										</ul>
+									</div>
+								</div>
+								<button class="add-address button" type="button">Add a New Address</button>
+							</form>
+						</div>
+
+						<div id="shipping-update-container" class="container" style="display: none;">
+							<form enctype="application/x-www-form-urlencoded" id="frmShippingUpdate" name="frmShippingUpdate" method="post">
+								<input type="hidden" name="edit-shipping-address" id="edit-shipping-address" />
+								<input type="hidden" name="state" id="state" value="shipping" />
+								<input id="edit-address-url" type="hidden" name="edit-address-url" value="{EDIT_ADDRESS_URL}" />
+								<input id="display-ship-to-button" type="hidden" name="display-ship-to-button" value="{EDIT_DISPLAY_SHIP_TO_BUTTON}" />
+								<input type="hidden" name="action" />
+								<div id="shipping-address-form">
+									<hr />
+									<h2 id="shipping-form-title">Add address</h2>
+									<div class="shipping-details">
+										<div class="shipping-address">
+											<div class="frmShipping">
+												<fieldset>
+													<legend>Address</legend>
+													<div class="street-address row grid-x grid-margin-x">
+														<div class="shipping-address required large-6 cell">
+															<input type="Text" maxlength="250" size="30" value="{VALUE_ADDRESS1}" name="Address1" id="Address1" placeholder="Street Address" />
+															{ERROR_SHIPPING_ADDRESS1}
+														</div>
+														<div class="shipping-address-2 optional large-6 cell">
+															<input class="optional" type="Text" maxlength="250" size="30" value="{VALUE_ADDRESS2}" name="Address2" id="Address2" placeholder="Apt, Suite, Bldg. (Optional)" />
+															{ERROR_shipping_address2}
+														</div>
+													</div>
+
+													<div class="row grid-x grid-margin-x">
+														<div class="city required large-4 cell">
+															<input type="Text" maxlength="250" value="{VALUE_CITY}" name="City" id="City" placeholder="City" />
+															{ERROR_SHIPPINGCITY}
+														</div>
+														<div class="country required large-4 cell">
+															{SELECT_SHIPPING_COUNTRY}
+															{ERROR_shipping_country}
+														</div>
+														<div class="state province required large-2 cell">
+															{SELECT_SHIPPING_PROVINCE}
+															{ERROR_shipping_region}
+														</div>
+														<div class="required header large-2 cell">
+															<input id="PostalCode" type="Text" maxlength="250" value="{VALUE_POSTALCODE}" name="PostalCode" placeholder="Postal Code" />
+															{ERROR_SHIPPING_POSTALCODE}
+														</div>
+													</div>
+												</fieldset>
+												<fieldset>
+													<legend>Phone</legend>
+													<div class="customer-name row grid-x grid-margin-x">
+														<div class="phone-home large-6 cell">
+															<div class="grid-x grid-margin-x margin-collapse">
+																<div class="phone-home-area area-code large-4 cell">
+																	<input id="phoneAreaCode" class="optional" type="Text" maxlength="3" size="7" value="{VALUE_AREACODEPHONE}" name="phoneAreaCode" placeholder="Area Code" />
+																</div>
+																<div class="phone-home phone-number large-8 cell"><input id="phone" class="optional" type="Text" maxlength="10" value="{VALUE_PHONE}" name="phone" placeholder="Phone (Optional)" /></div>
+																{ERROR_SHIPPING_PHONE}
+															</div>
+														</div>
+													</div>
+												</fieldset>
+											</div>
+										</div>
+									</div>
+									<div class="button-panel row grid-x grid-margin-x">
+										<div class="cell">
+											<button id="submit-address" class="button" action-state="add" type="button">Add Address</button>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="tabs-panel document-upload" id="document-upload">
+			<div class="grid-x grid-margin-x">
+				<div class="cell">
+					{PHARMACYWIRE_DOCUMENT_UPLOAD}
+				</div>
+			</div>
+		</div>
+
+		<div class="tabs-panel medical-questionnaire" id="medical-questionnaire">
+			<div class="grid-x grid-margin-x">
+				<div class="cell">
+					<form method="post" class="medical-questionnaire-form" data-abide data-validate-on-blur="true" data-live-validate="true" novalidate>
+						<p class="note">If you answer 'yes' to any of the following questions, please provide details.
+						</p>
+						<ol class="medical-questions">
+						</ol>
+						<input type="submit" class="submit-medical-questions button" value="Submit" style="display: none;" />
+
+						<div data-abide-error class="alert callout checkout-error" aria-live="assertive" style="display: none;">
+							<p><i class="fi-alert"></i> There are some errors. <br />Please review the form fields, fix
+								any errors, and submit again.</p>
+						</div>
+					</form>
+					<div class="cell medical-questionnaire-response" style="display: none;">
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+<!-- END: page -->

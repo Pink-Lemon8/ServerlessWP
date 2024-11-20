@@ -1,0 +1,28 @@
+<!-- BEGIN: page -->
+<div class="pw-pharmacy-wrap pw-search-summary container">
+	<div class="page-search-summary">
+		<!-- BEGIN: showdrugs -->
+		<ul class="drug_items">
+			<!-- BEGIN: drug -->
+			<li>{DRUG_ITEM}</li>
+			<!-- END: drug -->
+		</ul>
+		<!-- END: showdrugs -->
+
+		<!-- BEGIN: showotc -->
+		<ul class="otc_items">
+			<!-- BEGIN: otc -->
+			<li>{OTC_ITEM}</li>
+			<!-- END: otc -->
+		</ul>
+		<!-- END: showotc -->
+
+		<!-- BEGIN: no_drug -->
+		<div class="no-results-msg">
+			<p>{SEARCH_MESSAGE_NORESULTS}</p>
+		</div>
+		{SEARCH_FORM}
+		<!-- END: no_drug -->
+	</div>
+</div>
+<!-- END: page -->

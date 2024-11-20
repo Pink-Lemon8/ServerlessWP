@@ -1,0 +1,63 @@
+.pw-pharmacy-wrap {
+	/* this class is to override bootstrap which sets .collapse to display: none */
+	.collapse {
+		display: flex;
+	}
+	fieldset {
+		border: 1px solid #DDDDDD;
+		border-radius: 3px 3px 3px 3px;
+		margin: 18px 0;
+		padding: 12px;
+		legend {
+			font-weight: bold;
+			padding: 0 0.25rem;
+		}
+	}
+	label:not(.radio-button) {
+		font-weight: bold;
+	}
+	.note {
+		font-size: 0.9em;
+	}
+	.required {
+		&:not(.fa, .fab, .far, .fas) {
+			font-weight: bold;
+		}
+	}
+}
+
+.button {
+	text-transform: uppercase;
+}
+
+.error small,
+small.error {
+	display: block;
+	padding: 0.375em 0.5em;
+	margin-top: -1.3125em;
+	margin-bottom: 1em;
+	font-size: 0.75em;
+	font-weight: bold;
+	background: $error-color;
+	color: $white;
+	&:empty {
+		display: none;
+	}
+}
+
+.error {
+	color: $error-color;
+	width: 100%;
+}
+
+.notification {
+	li {
+		&:empty {
+			display: none;
+		}
+	}
+}
+
+.login-controls {
+	margin: 1rem 0;
+}

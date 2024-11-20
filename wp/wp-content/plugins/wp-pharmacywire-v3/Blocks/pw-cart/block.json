@@ -1,0 +1,17 @@
+{
+	"$schema": "https://json.schemastore.org/block.json",
+	"apiVersion": 2,
+	"name": "create-block/pw-cart",
+	"version": "0.1.0",
+	"title": "PharmacyWire Cart (Summary Block)",
+	"category": "widgets",
+	"icon": "cart",
+	"description": "PharmacyWire Shopping Cart summary block for use in sidebars, etc.",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "pw-cart",
+	"editorScript": "file:./build/index.js",
+	"editorStyle": "file:./build/index.css",
+	"style": "file:./build/style-index.css"
+}

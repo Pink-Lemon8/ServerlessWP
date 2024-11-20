@@ -1,0 +1,39 @@
+input {
+	&[type="submit"], &[type="image"], &[type="reset"],  &[type="button"] {
+		font-weight: 700;
+		height: 2.4375rem;
+	}
+}
+.area-code {
+	margin-right: 0.9375rem;
+}
+.birthdate {
+	.grid-x {
+			.birth-month {
+					// margin-right: 0.9375rem;
+					// width: calc(41.66667% - 0.9375rem);
+					padding-right: 0.5rem;
+			}
+			.birth-day {
+					// margin-right: 0.9375rem;
+					// width: calc(25% - 0.9375rem);
+					padding-right: 0.5rem;
+			}
+	}
+}
+.height-weight {
+	.grid-x {
+			.height-feet {
+					margin-right: 0.9375rem;
+					width: calc(50% - 0.9375rem);
+			}
+	}
+}
+
+label {
+	&.inline {
+		[type=radio] {
+			margin-bottom: 0;
+		}
+	}
+}

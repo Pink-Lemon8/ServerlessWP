@@ -1,0 +1,188 @@
+<!-- BEGIN: page -->
+<div class="pw-pharmacy-wrap pwire-checkout pw-checkout-cart container">
+
+	<div class="infor-panel">
+		<!-- Start page content here -->
+
+		<form name="frmCart" id="frmCheckout" method="post">
+			<input type="hidden" name="status" id="status" value="cart" />
+			<input type="hidden" name="deleteItem" id="deleteItem" />
+			<input type="hidden" name="action" id="action" />
+			<input type="hidden" name="rx-order-limit" id="rx-order-limit" value="{RX_ORDER_LIMIT}" />
+			<input type="hidden" name="otc-order-limit" id="otc-order-limit" value="{OTC_ORDER_LIMIT}" />
+
+			<table border="0" cellpadding="0" cellspacing="0" class="tbcheckout">
+				<thead>
+					<tr>
+						<th class="description">Description</th>
+						<th class="quantity">Quantity</th>
+						<th class="unit">Unit</th>
+						<th class="subtotal">Total</th>
+					</tr>
+				</thead>
+				<tbody class="line-items">
+					<!-- BEGIN: ITEM -->
+					<tr id="row[{ITEM_packageId}]" class="line-item" data-rx-status="{ITEM_RX_STATUS}" data-order-limit="{ITEM_order_limit}" data-multiple-item-factor="{ITEM_multipleItemFactor}" data-drug-attr="{ITEM_DRUG_ATTRIBUTES}" data-package-attr="{ITEM_PACKAGE_ATTRIBUTES}" {ITEM_data_attributes}>
+						<td class="description">
+							{ITEM_countryFlag}
+							<!-- BEGIN: description -->
+							<span class="item-description"><span class="item-name">{ITEM_name}</span> <span class="brand-or-generic">({ITEM_brandOrGeneric})</span> - <span class="item-strength">{ITEM_strength}</span> <span class="item-quantity">{ITEM_quantity}</span></span>
+							<div id="rem[{ITEM_packageId}]" role="button" class="remove">Remove</div>
+							<!-- END: description -->
+							<!-- <div class="drug-icons">{ITEM_brandOrGenericIcon}{ITEM_rxRequired}</div> -->
+							<div class="rx-status">{ITEM_rxRequired}</div>
+						</td>
+						<!-- BEGIN: brandQuantity -->
+						<td class="quantity">
+							<div class="quantity-controls grid-x">
+								<div class="shrink cell show-for-medium">
+									<button id="minus[{ITEM_packageId}]" data-drug-package-id="{ITEM_packageId}" role="button" class="cart-remove-quantity minus quantity-control hide-for-small button"><i class="fas fa-minus"></i></button>
+								</div>
+								<div class="auto cell">
+									<input type="text" id="qty[{ITEM_packageId}]" name="qty[{ITEM_packageId}]" class="qty cart-value" value="{ITEM_qty}" maxlength="5" />
+								</div>
+								<div class="shrink cell show-for-medium">
+									<button id="plus[{ITEM_packageId}]" data-drug-package-id="{ITEM_packageId}" role="button" class="cart-add-quantity plus quantity-control hide-for-small button"><i class="fas fa-plus"></i></button>
+								</div>
+							</div>
+							<div class="grid-x">
+								<div class="ordered-quantity cell">
+									<div id="orderqty[{ITEM_packageId}]" class="order-quantity cart-value">{ITEM_order_quantity}</div>
+								</div>
+							</div>
+						</td>
+						<!-- END: brandQuantity -->
+						<!-- BEGIN: brandQuantityDropdown -->
+						<td class="quantity">
+							<div class="grid-x">
+								<div class="cell">
+									<select id="qty[{ITEM_packageId}]" name="qty[{ITEM_packageId}]" class="qty cart-value" size="1">
+										{QTY_DROPDOWN}
+									</select>
+								</div>
+							</div>
+							<div class="grid-x">
+								<div class="ordered-quantity cell">
+									<div id="orderqty[{ITEM_packageId}]" class="order-quantity cart-value">{ITEM_order_quantity}</div>
+								</div>
+							</div>
+						</td>
+						<!-- END: brandQuantityDropdown -->
+						<td class="unit">\$<span id="unit[{ITEM_packageId}]" class="cart-value">{ITEM_price}</span></td>
+						<td class="subtotal">\$<span id="subtotal[{ITEM_packageId}]" class="cart-value">{ITEM_sub_total}</span></td>
+					</tr>
+					<!-- END: ITEM -->
+					<!-- BEGIN: NO_ITEM -->
+					<tr>
+						<td colspan="5" class="empty-cart">
+							Your cart is empty.
+						</td>
+					</tr>
+					<!-- END: NO_ITEM -->
+				</tbody>
+
+				<!-- BEGIN: TOTAL -->
+				<tfoot>
+					<tr class="sub-total">
+						<td colspan="2"></td>
+						<td class="heading">SubTotal</td>
+						<td class="value">\$<span id="cart-subtotal" class="cart-value">{SUB_TOTAL}</span></td>
+					</tr>
+					<!-- BEGIN: COUPON_LINEITEM -->
+					<tr class="coupons-line-item {COUPON_LINEITEM_CLASS}" data-coupon-code="{COUPON_CODE}" {COUPON_LINEITEM_STYLE}>
+						<td class="coupon-description">{COUPON_LINE_DESCRIPTION} {REMOVE_COUPON}</td>
+						<td colspan="2" class="heading coupon-label">{COUPON_LABEL} {COUPON_DISCOUNT_METHOD_HUMAN}</td>
+						<td class="value coupon-discount">{COUPON_DISCOUNT}</td>
+					</tr>
+					<!-- END: COUPON_LINEITEM -->
+					<tr class="shipping-fee">
+						<td colspan="2" rowspan="2" class="shipping-options-container">
+							<!-- BEGIN: SHIPPING_OPTIONS -->
+							<div class="shipping-options">
+								<label class="delivery-options-label" for="pw_shipping_options">Choose your delivery option:</label>
+									{SHIPPING_OPTIONS}
+							</div>
+							<!-- END: SHIPPING_OPTIONS -->
+
+							<!-- BEGIN: SHIPPING_ADDONS -->
+							<div class="shipping-addon-options">
+								<!-- BEGIN: SHIPPING_ADDON -->
+								<div class="shipping-addon-container"><input type="checkbox" name="pw_shipping_addons[{SHIPPING_ADDON_KEY}]" id="{SHIPPING_ADDON_KEY}" data-product-id="{SHIPPING_ADDON_PRODUCT_ID}" class="shipping-addon cart-value left" {SHIPPING_ADDON_STATE} />&nbsp;<label for="{SHIPPING_ADDON_KEY}">{SHIPPING_ADDON_LABEL}</label>
+								</div>
+								<!-- END: SHIPPING_ADDON -->
+							</div>
+							<!-- END: SHIPPING_ADDONS -->
+						</td>
+						<td class="heading">Shipping</td>
+						<td class="value"><span id="cart-shipping-fee" class="cart-value">{SHIPPING_FEE}</span></td>
+					</tr>
+					<tr class="grand-total">
+						<td class="heading">Total<span class="currency">&nbsp;(USD)</span></td>
+						<td class="value"> <span class="dollar-sign">\$</span><span id="cart-grand-total" class="cart-value">{TOTAL}</span></td>
+					</tr>
+				</tfoot>
+				<!-- END: TOTAL -->
+			</table>
+
+			<!-- BEGIN: BUTTON -->
+			<div class="button-panel grid-x">
+				<div class="shipping-message note small-12 medium-6 cell">
+				</div>
+				<div class="checkout-controls small-12 medium-6 cell">
+					<a href="{CONTINUE_SHOPPING_URL}" class="button left">Continue Shopping</a>
+					<input type="button" class="button right" name="btnCheckout" id="btnCheckout" value="Continue Checkout" onclick="setAction('next')" />
+				</div>
+			</div>
+			<!-- END: BUTTON -->
+
+			<!-- BEGIN: COUPON -->
+			<div class="coupon-outer-container" data-coupon-nonce="{COUPON_NONCE}">
+
+				<!-- BEGIN: COUPON_INPUT -->
+				<div class="coupon-container">
+					<div class="grid-x collapse coupon-input">
+						<div class="small-7 cell">
+							<input class="coupon-code" type="text" maxlength="20" size="20" value="" placeholder="Coupon Code" />
+						</div>
+						<div class="small-5 cell">
+							<input type="button" class="apply-coupon coupon-button button postfix" title="Apply Coupon" value="Apply" />
+						</div>
+					</div>
+					<div class="grid-x collapse">
+						<div class="coupon-response-container cell">
+							<span class="coupon-response"></span> <span class="coupon-description"></span>
+						</div>
+					</div>
+				</div>
+				<!-- END: COUPON_INPUT -->
+
+			</div>
+			<!-- END: COUPON -->
+
+			<!-- BEGIN: TAGS -->
+			<div class="tag-outer-container" data-tag-nonce="{TAG_NONCE}">
+				<!-- BEGIN: TAG -->
+				<div class="tag-container" data-tag-code="{TAG.code}" data-tag-type="{TAG.type}" data-tag-label="{TAG.label}">
+					<div class="grid-x collapse tag-input">
+						<div class="small-7 cell">
+							<input class="tag-code" type="text" maxlength="20" size="20" value="{TAG.value}" placeholder="{TAG.label}" {TAG.disabled} />
+						</div>
+						<div class="small-5 cell">
+							<input type="button" class="{TAG.action}-tag tag-button button postfix" title="{TAG.action} {TAG.label}" value="{TAG.action}" />
+						</div>
+					</div>
+					<div class="grid-x collapse">
+						<div class="tag-response-container cell">
+							<span class="tag-response">{TAG.response}</span> <span class="tag-description"></span>
+						</div>
+					</div>
+				</div>
+				<!-- END: TAG -->
+			</div>
+			<!-- END: TAGS -->
+
+		</form>
+		<!-- End page content here -->
+	</div>
+</div>
+<!-- END: page -->

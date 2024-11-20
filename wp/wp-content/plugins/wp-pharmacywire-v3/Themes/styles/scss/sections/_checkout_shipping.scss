@@ -1,0 +1,40 @@
+#frmReturnCustomer {
+	display: none;
+}
+.pw-checkout-shipping {
+	.shipping {
+		.hr {
+			float: left;
+			width: 100%;
+			border: 1px solid $medium-gray;
+			margin: 10px 0px 10px 0px;
+		}
+	}
+	.edit-shipping-optional {
+		text-align: right;
+	}
+}
+.shipping-info-panel {
+	.new-customer-info {
+		display: none;
+	}
+}
+
+.pw-select-shipping {
+	.select-shipping-address {
+		li {
+
+			padding: 0.5rem 0;
+			border-bottom: 1px solid $medium-gray;
+
+			&:first-child {
+				border-top: 1px solid $medium-gray;
+			}
+
+			button {
+				margin-bottom: 0;
+				white-space: nowrap;
+			}
+		}
+	}
+}

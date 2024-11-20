@@ -1,0 +1,26 @@
+{
+  "name": "wp-pharmacywire-v3",
+  "version": "1.0.0",
+  "description": "PharmacyWire WordPress Cart",
+  "private": true,
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chokidar": "^3.4.2",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {
+    "foundation-sites": "^6.6.3",
+    "jquery": "^3.5.1",
+    "what-input": "^5.2.10"
+  }
+}

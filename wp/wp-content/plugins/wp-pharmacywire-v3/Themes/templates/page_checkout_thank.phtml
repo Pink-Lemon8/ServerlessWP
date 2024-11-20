@@ -1,0 +1,143 @@
+<!-- BEGIN: page -->
+<div class="pw-pharmacy-wrap pwire-checkout pw-checkout-thank container">
+	{RESULT_MESSAGES}
+	<div class="infor-panel thankyou-container">
+		<!-- Start page content here -->
+
+		<!-- BEGIN: NOTICE_PRESCRIPTION -->
+		<div>
+			<span class="bold">Your order has been submitted to our pharmacy.</span><br />
+			<span class="bold">To fill the order we require your prescription. Please indicate below how your
+				prescription will be submitted to our pharmacy for processing.</span>
+		</div>
+		<!-- END: NOTICE_PRESCRIPTION -->
+		<!-- BEGIN: NOTICE_OTC -->
+		<div>
+			<span class="bold">Your order has been submitted to our pharmacy.</span><br />
+			<span class="bold">If you have additional comments regarding your order for our pharmacists, please enter
+				them below.</span>
+		</div>
+		<!-- END: NOTICE_OTC -->
+		<!-- BEGIN:SHOW_PAYMENT_ACCOUNT_ACTIVATION_QWIPI -->
+		<div class="row">
+			<iframe style="height: 100px;" sandbox="allow-scripts allow-forms allow-same-origin allow-top-navigation" class="large-12 columns" src="{URL_PAYMENT_ACCOUNT_ACTIVATION_URL}"></iframe>
+		</div>
+		<!-- END:SHOW_PAYMENT_ACCOUNT_ACTIVATION_QWIPI -->
+		<!-- BEGIN:SHOW_PAYMENT_DETAIL_QWIPI -->
+		<div class="row">
+
+			<p class="qwipi-msg large-12 columns">Please enter your credit card information below for your order to be
+				processed.</p>
+			{HTML_SHOW_PAYMENT_DETAIL_SRC}
+
+			<iframe name="paymentFrame" id="paymentFrame" style="height: 600px;" sandbox="allow-scripts allow-forms allow-same-origin allow-top-navigation" frameBorder="0" class="large-12 columns"></iframe>
+		</div>
+		<!-- END:SHOW_PAYMENT_DETAIL_QWIPI -->
+
+		<!-- BEGIN:SHOW_OFFSITE_CC_PROCESSOR -->
+		<div class="row">
+
+			<p class="qwipi-msg large-12 columns">Please enter your payment details below for your order to be
+				processed.</p>
+			{SHOW_OFFSITE_CC_PROCESSOR_SRC}
+			<script type="text/javascript">
+				function reload_billing_iframe() {
+					document.getElementById('paymentFrame').src = '{SHOW_OFFSITE_CC_PROCESSOR_URL}';
+				}
+			</script>
+
+			<iframe name="paymentFrame" id="paymentFrame" src="{SHOW_OFFSITE_CC_PROCESSOR_URL}" style="height: 600px;" sandbox="allow-scripts allow-forms allow-same-origin allow-top-navigation" frameBorder="0" class="large-12 columns"></iframe>
+		</div>
+		<!-- END:SHOW_OFFSITE_CC_PROCESSOR -->
+
+
+		<!-- BEGIN:HIDE_FINAL_SECTION -->
+		<div id="final_section" style="display: none;">
+			<!-- END:HIDE_FINAL_SECTION -->
+
+			<!-- BEGIN:SUCCESS -->
+			<div>
+				<p>Thank you! Your order has been finalized and our pharmacy will begin processing your order shortly.
+				</p>
+				<p>Your order number is: {ORDER_NUMBER}</p>
+
+			</div>
+
+			<script type="text/javascript">
+				jQuery(document).ready(function() {
+					jQuery('iframe#paymentFrame').css('height', '100px');
+					jQuery('.checkout-steps li').removeClass('active');
+					jQuery('.checkout-steps li:last-child').addClass('active');
+					jQuery('.qwipi-msg').remove();
+				});
+			</script>
+			<!-- END:SUCCESS -->
+			<!-- BEGIN:COMMENT -->
+			<div></div>
+			<form class="upload" id="frmCheckout" name="frmCheckout" method="post" enctype="multipart/form-data">
+				<input type="hidden" id="action" name="action" value="submit" />
+				<div class="prescription-submission">
+					<!-- BEGIN:PRESCRIPTION -->
+					<h2>How to Submit Your Prescription</h2>
+					<ul class="prescription-submission-options">
+						<li class="on-file-prescription">
+							<input type="radio" {SCRIPT_1} name="presription" id="pre1" value="1" />
+							<span>My prescription is already on file</span>
+						</li>
+						<li class="fax-prescription">
+							<input type="radio" {SCRIPT_2} name="presription" id="pre2" value="2" />
+							<span>I will fax you my prescription</span>
+						</li>
+						<li class="mail-prescription">
+							<input type="radio" {SCRIPT_3} name="presription" id="pre3" value="3" />
+							<span>I will mail you my prescription</span>
+							<div class="address">
+								<span>Mail your prescription to:</span>
+								<div>
+									<strong>{PW_NAME}</strong><br />
+									<span>{PW_ADDRESS}</span><br />
+									<span>{PW_CITY}, {PW_PROVINCE} {PW_COUNTRY}</span><br />
+									<span>{PW_POSTAL_CODE}</span>
+								</div>
+							</div>
+						</li>
+						<li class="call-to-arrange-prescription">
+							<input type="radio" {SCRIPT_4} name="presription" id="pre4" value="4" />
+							<span>Contact me to arrange -</span><strong>&nbsp;Example: Get prescription from my doctor
+								or transfer prescription</strong>
+						</li>
+						<li class="upload-prescription">
+							<input type="radio" {SCRIPT_5} name="presription" id="pre5" value="5" />
+							I will upload my prescription
+							<div class="prescription-upload">
+								<label for="file">Filename:</label>
+								<input type="file" name="file" id="file" />
+								<label class="uploaddo_format"> The document types can be pdf, gif, jpg, png and tif
+									only</label>
+								<label class="uploaddo_format">The document size less than 1MB </label>
+							</div>
+						</li>
+					</ul>
+					<!-- END:PRESCRIPTION -->
+					<div class="additional-comments row">
+						<div class="add-comments large-12 columns">
+							<h2>Additional Comments</h2>
+							<span>Any additional information you'd like us to know.</span>
+							<textarea rows="3" cols="50" id="comment" name="comment">{COMMENTS}</textarea>
+						</div>
+					</div>
+					<div class="row">
+						<div class="large-12 columns">
+							<button class="button" type="button" onclick="thankyou_submit(this);">Submit</button>
+						</div>
+					</div>
+				</div>
+			</form>
+			<!-- END:COMMENT -->
+			<!-- End page content here -->
+			<!-- BEGIN:HIDE_FINAL_SECTION_END -->
+		</div>
+		<!-- END:HIDE_FINAL_SECTION_END -->
+	</div>
+</div>
+<!-- END: page -->

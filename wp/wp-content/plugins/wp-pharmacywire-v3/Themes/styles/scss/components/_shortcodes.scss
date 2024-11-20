@@ -1,0 +1,8 @@
+// [PharmacyWire condition=""]
+.condition_items {
+	column-count: 2;
+
+	@include medium {
+		column-count: 3;
+	}
+}

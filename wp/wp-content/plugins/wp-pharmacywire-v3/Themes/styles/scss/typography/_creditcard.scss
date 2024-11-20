@@ -1,0 +1,22 @@
+.credit-card-icon {
+	width: 45px;
+	height: 27px;
+	display: inline-block;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	margin-right: 0.3em;
+
+	&.visa {
+		background-image: url(../../images/credit-cards/visa.png);
+	}
+	&.discover {
+		background-image: url(../../images/credit-cards/discover.png);
+	}
+	&.amex {
+		background-image: url(../../images/credit-cards/amex.png);
+	}
+	&.mastercard {
+		background-image: url(../../images/credit-cards/mastercard.png);
+	}
+}

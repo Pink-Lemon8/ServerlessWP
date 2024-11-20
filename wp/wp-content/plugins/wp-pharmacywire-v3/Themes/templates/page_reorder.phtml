@@ -1,0 +1,190 @@
+<!-- BEGIN: page -->
+<div class="pw-pharmacy-wrap pw-reorder page-refill page-reorder container">
+	<form name="frmDetail" id="frmDetail-{FORM_ID}" action="{ADD_TO_CART_URL}" method="post">
+		<input type="hidden" id="package-{FORM_ID}" name="package" value="" />
+		<input type="hidden" id="status" name="status" value="cart" />
+		<input type="hidden" id="qty-{FORM_ID}" name="qty" value="0" />
+		<input type="hidden" id="reorder-submit" name="reorder-submit" value="1" />
+		<div class="page-search-detail {REFERENCE_DRUG}">
+			{INTRO_MESSAGE}
+			<!-- BEGIN: prescription -->
+			<div class="horizontalRule"></div>
+			<table class="drug-result" border="0" cellpadding="0" cellspacing="0" width="100%">
+				<thead>
+					<tr>
+						<td colspan="6" class="medicationHeading">
+							<h3>{BRAND_NAME}</h3>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="medicationIngredient">
+							<!-- BEGIN: drugIngredientsList -->
+							<label>Ingredients:</label> {INGREDIENT_LIST}
+							<!-- END: drugIngredientsList -->
+						</td>
+						<td colspan="2" class="lastOrdered">
+							<!-- BEGIN: lastOrderedDate --><label>Ordered Date:</label> {LAST_ORDER_DATE}
+							<!-- END: lastOrderedDate -->
+						</td>
+						<td colspan="2" class="prescriptionNumber">
+							<!-- BEGIN: prescriptionNumber -->
+							<label>Rx Number:</label>
+							<span class="rx-number">{PRESCRIPTION_NUMBER}</span>
+							<!-- END: prescriptionNumber -->
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- BEGIN: prescriptionPackageHead -->
+					<tr class="{ROW.drugClass}">
+						<th class="drug-icons">Source</th>
+						<th class="drug-type">
+							Drug Type
+						</th>
+						<th class="strength">
+							Strength
+						</th>
+						<th class="quantity">
+							Quantity
+						</th>
+						<th class="price">
+							Starting Price
+						</th>
+						<th class="add-to-cart">&nbsp;</th>
+					</tr>
+					<!-- END: prescriptionPackageHead -->
+					<!-- BEGIN: prescriptionPackage -->
+					<tr class="{ROW.drugClass} re-order drug-package" package-id="{ROW.packageId}" form-id="{ROW.formId}">
+						<td class="drug-icons">{ROW.brandOrGeneric}{ROW.rxRequired}{ROW.countryFlag}{ROW.country}</td>
+						<td class="drug-type">
+							{ROW.category}
+						</td>
+						<td class="strength">
+							{ROW.strength} {ROW.strengthUnit}
+						</td>
+						<td class="quantity">
+							{ROW.quantity}
+						</td>
+						<td class="price">
+							\${ROW.price}
+						</td>
+						<td class="add-to-cart">{ROW.addToCart}</td>
+					</tr>
+					<!-- END: prescriptionPackage -->
+
+					<!-- BEGIN: no_selections_available -->
+					<tr>
+						<td colspan="6" class="availability">The original product you ordered is no longer available.
+						</td>
+					</tr>
+					<!-- END: no_selections_available -->
+
+					<!-- BEGIN: alternative_section -->
+					<tr>
+						<!-- BEGIN: text_toggle_alternatives -->
+						<td class="control-alternatives" colspan="6"><a id="{ROW.packageId}" class="show-alternatives" href="#">Show Alternatives</a></td>
+						<!-- END: text_toggle_alternatives -->
+						<!-- BEGIN: text_force_alternatives -->
+						<td colspan="6" class="availability">The original product you ordered is no longer available -
+							check alternatives below.</td>
+						<!-- END: text_force_alternatives -->
+					</tr>
+					<!-- BEGIN: toggle_alternatives -->
+					<tr id="{ROW.packageId}-alternatives" class="alternatives" style="display: none;">
+						<!-- END: toggle_alternatives -->
+						<!-- BEGIN: force_alternatives -->
+					<tr id="{ROW.packageId}-alternatives" class="available-alternatives">
+						<!-- END: force_alternatives -->
+						<td colspan="6">
+							<!-- BEGIN: alternative -->
+							<table border="0" cellpadding="0" cellspacing="0" width="100%">
+								<thead>
+									<tr>
+										<td colspan="6" class="medicationHeading">
+											<h3>{BRAND_NAME}</h3>
+										</td>
+									</tr>
+									<tr class="{ROW.drugClass}">
+										<th class="drug-icons">Source</th>
+										<th class="drug-type">
+											Drug Type
+										</th>
+										<th class="strength">
+											Strength
+										</th>
+										<th class="quantity">
+											Quantity
+										</th>
+										<th class="price">
+											Starting Price
+										</th>
+										<th class="add-to-cart">&nbsp;</th>
+									</tr>
+								</thead>
+
+								<!-- BEGIN: alternativePackage -->
+								<tr class="{ROW.drugClass} alternative re-order drug-package" package-id="{ROW.packageId}" form-id="{ROW.formId}">
+									<td class="drug-icons">{ROW.brandOrGeneric}{ROW.rxRequired}{ROW.countryFlag}{ROW.country}</td>
+									<td class="drug-type">
+										{ROW.category}
+									</td>
+									<td class="strength">
+										{ROW.strength} {ROW.strengthUnit}
+									</td>
+									<td class="quantity">
+										{ROW.quantity}
+									</td>
+									<td class="price">
+										\${ROW.price}
+									</td>
+									<td class="add-to-cart">{ROW.addToCart}</td>
+								</tr>
+								<!-- END: alternativePackage -->
+							</table>
+							<!-- END: alternative -->
+						</td>
+					</tr>
+					<!-- END: alternative_section -->
+
+
+					<!-- BEGIN: prescriptionInfo -->
+					<tr>
+						<td class="rx-label-info-container" colspan="6">
+							<table class="rx-label-info">
+								<tbody>
+									<tr>
+										<td colspan="3" class="rx-instructions"><strong>Medication
+												instructions:</strong> {INSTRUCTIONS}</td>
+									</tr>
+									<tr>
+										<td class="rx-remaining"><strong>Authorized doses:</strong><br /> {FILLED}
+											{TYPE}</td>
+										<td class="rx-remaining"><strong>Remaining on file:</strong><br /> {REMAINING}
+											{TYPE}</td>
+										<td class="rx-expiry"><strong>Prescription expiry:</strong><br />
+											{PRESCRIPTION_EXPIRY}</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+					<!-- END: prescriptionInfo -->
+					<!-- BEGIN: noActivePrescription -->
+					<tr>
+						<td class="no-active-rx" colspan="6">
+							<b>No active prescription on file.</b> Please email <a href="mailto:{PHARMACY_RX_EMAIL}">{PHARMACY_RX_EMAIL}</a> if you would like us to contact your doctor for a new prescription.
+						</td>
+					</tr>
+					<!-- END: noActivePrescription -->
+				</tbody>
+			</table>
+			<!-- END: Prescription -->
+			<span class="schedule-message">{SCHEDULE_MESSAGE}</span>
+		</div>
+		<!-- page-search-detail ends -->
+	</form>
+	<!-- BEGIN: noRecentProductsFound -->
+	<p>{NO_RECENT_PRODUCTS_FOUND}</p>
+	<!-- END: noRecentProductsFound -->
+</div>
+<!-- END: page -->

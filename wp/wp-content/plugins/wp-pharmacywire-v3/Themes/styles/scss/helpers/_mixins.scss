@@ -1,0 +1,41 @@
+$breakpoints: (small: 0px,
+	medium: 640px,
+	large: 1024px,
+	xlarge: 1200px,
+	xxlarge: 1440px,
+);
+
+// Small devices
+@mixin small {
+	@media (min-width: map-get($breakpoints, 'small')) {
+		@content;
+	}
+}
+
+// Medium devices
+@mixin medium {
+	@media (min-width: map-get($breakpoints, 'medium')) {
+		@content;
+	}
+}
+
+// Large devices
+@mixin large {
+	@media (min-width: map-get($breakpoints, 'large')) {
+		@content;
+	}
+}
+
+// Extra large devices
+@mixin x-large {
+	@media (min-width: map-get($breakpoints, 'x-large')) {
+		@content;
+	}
+}
+
+// Extra large devices
+@mixin xx-large {
+	@media (min-width: map-get($breakpoints, 'xx-large')) {
+		@content;
+	}
+}

@@ -1,0 +1,84 @@
+<!-- BEGIN: page -->
+<div class="pw-pharmacy-wrap pw-view-order container">
+	{RESULT_MESSAGES}
+
+	<!-- BEGIN: orderInfo -->
+	<div id="order-info">
+		<h2>Order Info:</h2>
+		<dl>
+			<dt>Order Id:</dt>
+			<dd>{ORDER_ID}</dd>
+			<dt>Status:</dt>
+			<dd>{STATUS}</dd>
+			<dt>Date:</dt>
+			<dd>{DATE}</dd>
+			<dt>Tracking Id:</dt>
+			<dd>{TRACKING_ID}</dd>
+		</dl>
+	</div>
+	<!-- END: orderInfo -->
+
+	<!-- BEGIN: billingInfo -->
+	<div id="billing-info">
+		<h2>Billed To:</h2>
+		{BILLING_FIRST_NAME} {BILLING_LAST_NAME}<br>
+		{BILLING_ADDRESS}<br>
+		{BILLING_CITY}, {BILLING_STATE} {BILLING_POSTAL_CODE}<br>
+		{BILLING_COUNTRY}<br>
+	</div>
+	<!-- END: billingInfo -->
+
+	<!-- BEGIN: shippingInfo -->
+	<div id="shipping-info">
+		<h2>Shipped To:</h2>
+		{SHIPPING_FIRST_NAME} {SHIPPING_LAST_NAME}<br>
+		{SHIPPING_ADDRESS}<br>
+		{SHIPPING_CITY}, {SHIPPING_STATE} {SHIPPING_POSTAL_CODE}<br>
+		{SHIPPING_COUNTRY}<br>
+	</div>
+	<!-- END: shippingInfo -->
+
+	<div id="order-details">
+		<table cellpadding="0" cellspacing="0" border="0">
+			<thead>
+				<tr>
+					<th class="description">Description</th>
+					<th class="quantity">Quantity</th>
+					<th class="unit-price">Unit Price</th>
+				</tr>
+			</thead>
+			<tbody id="order-line-items-{ORDER_ID}">
+				<!-- BEGIN: orderDetails -->
+				<tr>
+					<td class="description">{ROW.description}</td>
+					<td class="quantity">{ROW.quantity}</td>
+					<td class="unit-price">\${ROW.unitprice}</td>
+				</tr>
+				<tr class="order-details-view">
+					<td colspan="3">
+						<div class="order-container" style="display: none;"></div>
+					</td>
+				</tr>
+				<!-- END: orderDetails -->
+			</tbody>
+			<tfoot>
+				<tr>
+					<th class="subtotal" colspan="2">Subtotal</th>
+					<td>\${SUBTOTAL}</td>
+				</tr>
+				<tr>
+					<th class="shipping-fee" colspan="2">Shipping Fee</th>
+					<td>\${SHIPPING_COST}</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="view-pdf">{INVOICE_PDF}</div>
+					</td>
+					<th class="total">Total</th>
+					<td>\${TOTAL}</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+</div>
+<!-- END: page -->

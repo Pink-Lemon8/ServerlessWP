@@ -1,0 +1,93 @@
+<!-- BEGIN: page -->
+<div class="pw-pharmacy-wrap pwire-checkout pw-select-shipping container">
+	<div id="shipping-container" class="container">
+		<!-- Start page content here -->
+
+		<h2>Select a Shipping Destination</h2>
+		<div id="select-shipping-container">
+			<form name="frmSelectShipping" id="frmSelectShipping" method="post">
+				<input type="hidden" name="action" id="action" />
+				<input type="hidden" name="shipping-address-id" id="shipping-address-id" />
+				<div class="checkout-edit-address">
+					<div>
+						<ul id="select-shipping-address" name="select-shipping-address" class="select-shipping-address">
+							{ADDRESS_LIST}
+						</ul>
+					</div>
+				</div>
+				<button class="add-address button" type="button">Add a New Address</button>
+			</form>
+		</div>
+
+		<div id="shipping-update-container" class="container" style="display: none;">
+			<form enctype="application/x-www-form-urlencoded" id="frmShippingUpdate" name="frmShippingUpdate" method="post">
+				<input type="hidden" name="edit-shipping-address" id="edit-shipping-address" />
+				<input type="hidden" name="state" id="state" value="shipping" />
+				<input id="edit-address-url" type="hidden" name="edit-address-url" value="{EDIT_ADDRESS_URL}" />
+				<input id="display-ship-to-button" type="hidden" name="display-ship-to-button" value="{DISPLAY_SHIP_TO_BUTTON}" />
+				<input type="hidden" name="action" />
+				<div id="shipping-address-form">
+					<h2 id="shipping-form-title">Add a new address</h2>
+					<div class="shipping-details">
+						<div class="shipping-address">
+							<div class="frmShipping">
+								<fieldset>
+									<legend>Address</legend>
+									<div class="street-address grid-x grid-margin-x">
+										<div class="shipping-address required large-6 cell">
+											<input type="Text" maxlength="250" size="30" tabindex="3" value="{VALUE_ADDRESS1}" name="Address1" id="Address1" placeholder="Street Address" />
+											{ERROR_SHIPPING_ADDRESS1}
+										</div>
+										<div class="shipping-address-2 optional large-6 cell">
+											<input class="optional" type="Text" maxlength="250" size="30" tabindex="4" value="{VALUE_ADDRESS2}" name="Address2" id="Address2" placeholder="Apt, Suite, Bldg. (Optional)" />
+											{ERROR_shipping_address2}
+										</div>
+									</div>
+
+									<div class="grid-x grid-margin-x">
+										<div class="city required large-3 cell">
+											<input type="Text" maxlength="250" tabindex="6" value="{VALUE_CITY}" name="City" id="City" placeholder="City" />
+											{ERROR_SHIPPINGCITY}
+										</div>
+										<div class="country required large-3 cell">
+											{SELECT_SHIPPING_COUNTRY}
+											{ERROR_shipping_country}
+										</div>
+										<div class="state province required large-3 cell">
+											{SELECT_SHIPPING_PROVINCE}
+											{ERROR_shipping_region}
+										</div>
+										<div class="required header large-3 cell">
+											<input id="PostalCode" type="Text" maxlength="250" tabindex="9" value="{VALUE_POSTALCODE}" name="PostalCode" placeholder="Postal Code" />
+											{ERROR_SHIPPING_POSTALCODE}
+										</div>
+									</div>
+								</fieldset>
+								<fieldset>
+									<legend>Phone</legend>
+									<div class="customer-name grid-x grid-margin-x">
+										<div class="phone-home large-6 cell">
+											<div class="grid-x">
+												<span class="phone-home-area area-code auto cell"><input id="phoneAreaCode" class="optional" type="Text" maxlength="3" tabindex="11" size="7" value="{VALUE_AREACODEPHONE}" name="phoneAreaCode" placeholder="Area Code" /></span>
+												<span class="phone-home phone-number large-8 cell"><input id="phone" class="optional" type="Text" maxlength="10" tabindex="12" value="{VALUE_PHONE}" name="phone" placeholder="Phone (Optional)" /></span>
+												{ERROR_SHIPPING_PHONE}
+											</div>
+										</div>
+									</div>
+								</fieldset>
+							</div>
+						</div>
+					</div>
+					<div class="button-panel grid-x grid-margin-x">
+						<div class="small-12 cell">
+							<button id="submit-address" class="button" action-state="add" type="button" tabindex="13">Add Address</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<!-- End page content here -->
+	</div>
+</div>
+<!-- END: page -->

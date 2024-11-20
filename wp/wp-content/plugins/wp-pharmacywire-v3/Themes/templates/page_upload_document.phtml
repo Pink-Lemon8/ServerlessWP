@@ -1,0 +1,23 @@
+<!-- BEGIN: page -->
+<div class="pw-pharmacy-wrap pw-upload-document container">
+	<div class="upload-instructions">
+		<h3>Upload your prescription:</h3>
+		<p class="upload-note">The document types can be <b>pdf</b>, <b>gif</b>, <b>jpg</b>, <b>png</b> and <b>tif</b>
+			only. Each document uploaded must be less than {UPLOAD_SIZE_LIMIT}.</p>
+	</div>
+
+	<form id="prescriptionUpload" class="rx-upload dropzone" method="post" enctype="multipart/form-data"
+		action="{UPLOAD_URL}">
+		<div class="fallback">
+			<input type="file" name="file" id="file" class="rx-file-upload" accept="image/*,application/pdf" />
+		</div>
+		<div class="upload-rx-response" style="display: none;"></div>
+		<div class="dz-default dz-message">
+			<span>
+				<i class="fas fa-file-prescription"></i><i class="far fa-upload"></i><br>
+				Click or drag Rx files here to upload
+			</span>
+		</div>
+	</form>
+</div>
+<!-- END: page -->

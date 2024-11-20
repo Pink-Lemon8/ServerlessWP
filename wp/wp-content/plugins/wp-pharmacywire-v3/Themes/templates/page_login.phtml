@@ -1,0 +1,51 @@
+<!-- BEGIN: page -->
+<div class="pw-pharmacy-wrap pw-login container">
+	{RESULT_MESSAGES}
+	<div class="infor-panel">
+		<!-- Start page content here -->
+
+		<!-- BEGIN:LOGIN_FORM -->
+		<div class="login-form">
+			<form method="post" name="login" class="login login_form" data-abide data-validate-on-blur="true" novalidate>
+				<div class="grid-x grid-margin-x">
+					<div class="small-12 cell">
+						<div class="caption">
+							<label for="username">Email</label>
+						</div>
+						<div>
+							<input type="text" id="username" name="username" class="username" size="20" autocomplete="username" required>
+							<label class="form-error" data-form-error-for="username">Valid email address is required.</label>
+						</div>
+					</div>
+				</div>
+				<div class="grid-x grid-margin-x">
+					<div class="small-12 cell">
+						<div class="caption">
+							<label for="password">Password</label>
+						</div>
+						<div>
+							<input type="password" name="password" id="password" size="20" autocomplete="password" required>
+							<label class="form-error" data-form-error-for="password">Valid password is required.</label>
+						</div>
+					</div>
+				</div>
+				<div data-abide-error class="alert callout" aria-live="assertive" style="display: {MESSAGE_DISPLAY};">
+					<p><i class="fi-alert"></i>{MESSAGE}</p>
+				</div>
+				<div class="grid-x grid-margin-x">
+					<div class="small-12 cell action">
+						<input type="submit" value="Login" name="Submit" class="submit button">
+					</div>
+				</div>
+				<div class="grid-x grid-margin-x">
+					<div class="login-controls small-12 cell">
+						<a href="{URL_REGISTER}">Create new account</a>&nbsp;<span class="separate">|</span>&nbsp;<a href="{URL_FORGOT}">Forgot password</a>
+					</div>
+				</div>
+			</form>
+		</div>
+		<!-- END:LOGIN_FORM -->
+		<!-- End page content here -->
+	</div>
+</div>
+<!-- END: page -->

@@ -1,0 +1,121 @@
+.checkout-steps {
+	padding: 0;
+	margin: 0 0 1rem 0;
+	list-style: none;
+	position: relative;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-ms-flex-direction: row;
+	flex-direction: row;
+
+	@include small-only {
+		-ms-flex-pack: center;
+		justify-content: center;
+	}
+
+	li {
+		padding: 0.5rem;
+		font-size: 0.8em;
+		font-weight: bold;
+		text-transform: uppercase;
+
+		&+li {
+			margin: 0 0 0 0.5rem;
+		}
+	}
+
+	.active {
+		background-color: black;
+		color: $white;
+	}
+}
+
+.tbcheckout {
+	input.qty {
+		display: inline-block;
+		width: 100%;
+	}
+
+	.quantity {
+		.quantity-controls {
+			min-width: 8rem;
+			max-width: 9rem;
+
+			.button {
+				min-width: 2rem;
+				max-width: 3rem;
+
+				* {
+					// ensure nested elements don't block click events
+					pointer-events: none;
+				}
+			}
+		}
+	}
+
+	.description {
+		.remove {
+			display: none;
+		}
+	}
+
+	.item-description {
+		.item-name {
+			font-weight: bold;
+		}
+	}
+
+	.coupons-line-item {
+		&.invalid {
+			color: $error-color;
+		}
+	}
+
+	.subtotal,
+	.coupons-line-item .coupon-discount,
+	.shipping-fee .value,
+	.grand-total .value,
+	.sub-total .value {
+		text-align: right;
+	}
+
+	.unit {
+		text-align: center;
+	}
+
+	tfoot {
+		.heading {
+			text-align: right;
+		}
+	}
+
+	[data-attr-mandatory-product="1"] {
+		.qty, .quantity-controls, .remove {
+			display: none;
+		}
+	}
+}
+
+.checkout-controls {
+	text-align: right;
+}
+
+.coupon-outer-container {
+	width: 20rem;
+
+	.coupon-button {
+		// to match height of input better
+		height: 2.4375rem;
+	}
+}
+
+.tag-outer-container {
+	width: 20rem;
+
+	.tag-button {
+		// to match height of input better
+		height: 2.4375rem;
+	}
+}
