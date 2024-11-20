@@ -100,6 +100,8 @@ if (isset($_ENV['S3_KEY_ID']) && isset($_ENV['S3_ACCESS_KEY'])) {
         'provider' => 'aws',
         'access-key-id' => $_ENV['S3_KEY_ID'],
         'secret-access-key' => $_ENV['S3_ACCESS_KEY'],
+	'region' => $_ENV['S3_REGION'],
+        'bucket' => $_ENV['S3_BUCKET'],
 ) ) );
 }
 
