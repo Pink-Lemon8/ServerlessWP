@@ -9,7 +9,7 @@ WordPress hosting is silly. Serverless WordPress on Vercel, Netlify, or AWS Lamb
 
 [![](https://markdown-videos.vercel.app/youtube/A1HZB2OqpCY)](https://youtu.be/A1HZB2OqpCY)
 
-## Project goals.
+## Project goals
 
 ✅ Maintaining servers for WordPress can be a pain. Serverless hosting should be less work.
 
